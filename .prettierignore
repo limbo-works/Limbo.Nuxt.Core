@@ -1,0 +1,8 @@
+node_modules
+.nuxt
+.vscode
+dist
+public
+documentation
+package.json
+*.min.js

@@ -1,0 +1,6 @@
+@import './preflight.css';
+@layer preflight {
+	body {
+		@apply font-sans;
+	}
+}

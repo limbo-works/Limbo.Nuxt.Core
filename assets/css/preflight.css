@@ -1,0 +1,274 @@
+/*
+	Last modified: 2023/02/28 09:12:05
+
+	preflight.css is our own, custom CSS reset which takes inspiration from
+	https://www.joshwcomeau.com/css/custom-css-reset/ and the ordiary preflight
+	https://v2.tailwindcss.com/docs/preflight. We use this instead of Tailwind's
+	own/built-in preflight so that we can control it on a granular level.
+
+	We generally use :where() to make the specificty as low as possible.
+*/
+@layer preflight {
+	*,
+	*::before,
+	*::after {
+		/*
+			A more logical and reliable box model.
+		*/
+		box-sizing: border-box;
+		border-color: currentcolor;
+		border-style: solid;
+
+		/*
+			Custom Tailwind handlings, to make Tailwind
+			behave as expected.
+		*/
+		border-width: 0;
+
+		--tw-border-opacity: 1;
+	}
+
+	/*
+		No margins per default.
+		("*" has no specificity, so no :where() here)
+	*/
+	* {
+		margin: 0;
+	}
+
+	/*
+		To allow us to actually set height: 100%; in the content.
+	*/
+	:where(html, body, #__nuxt, #__layout) {
+		width: 100%;
+		height: 100%;
+	}
+
+	:where(html) {
+		/*
+			We want our text to be accessible and
+			readable per default.
+		*/
+		line-height: calc(1em + 0.5rem);
+		/*
+			A more reasonable default tab size.
+		*/
+		tab-size: 4;
+		tab-size: 4;
+		-webkit-font-smoothing: antialiased;
+		text-size-adjust: 100%;
+	}
+
+	/*
+		To avoid issues with elements outside of what's rendered in Nuxt.
+	*/
+	:where(#__nuxt) {
+		isolation: isolate;
+	}
+
+	/*
+		We want certain "replaced elements" to behave more
+		as expected.
+	*/
+	:where(img, picture, video, canvas, svg, audio, iframe, embed, object) {
+		display: block;
+		vertical-align: middle;
+	}
+
+	:where(img, video, canvas, audio, iframe, embed, object) {
+		max-width: 100%;
+	}
+	:where(
+			:is(img, video, canvas, audio, iframe, embed, object):not([height])
+		) {
+		height: auto;
+	}
+
+	/*
+		SVGs should not be clickable by default.
+	*/
+	:where(svg) {
+		pointer-events: none;
+	}
+
+	/* Tailwind specific */
+	:where(img) {
+		border-style: solid;
+	}
+
+	/*
+		We want inputs and other elements to be as basic
+		as possible, so that most styling is opt-in.
+	*/
+	:where(input, button, textarea, select, optgroup) {
+		padding: 0;
+		color: inherit;
+		font: inherit;
+		line-height: inherit;
+	}
+
+	:where(
+			button,
+			input[type='button'],
+			input[type='reset'],
+			input[type='submit'],
+			select
+		) {
+		text-transform: none;
+	}
+
+	:where(
+			button,
+			input[type='button'],
+			input[type='reset'],
+			input[type='submit']
+		) {
+		background-color: transparent;
+		background-image: none;
+		appearance: button;
+	}
+
+	:where(
+			button,
+			input[type='button'],
+			input[type='reset'],
+			input[type='submit'],
+			[role='button'],
+			input[type='checkbox'],
+			input[type='radio']
+		) {
+		cursor: pointer;
+	}
+
+	/*
+		Note: These doesn't work if wrapped
+		in a :where() clause.
+	*/
+	[type='search']::-webkit-search-cancel-button,
+	[type='search']::-webkit-search-decoration {
+		appearance: none;
+	}
+
+	:where(summary) {
+		display: list-item;
+	}
+
+	:where(fieldset, legend) {
+		padding: 0;
+	}
+
+	:where(textarea) {
+		resize: vertical;
+	}
+
+	:where(input)::placeholder,
+	:where(textarea)::placeholder {
+		color: inherit;
+		opacity: 1;
+	}
+
+	:where(p, h1, h2, h3, h4, h5, h6) {
+		font: inherit;
+
+		/*
+			To avoid too much overflow, and to
+			grand some editor control for hyphens.
+		*/
+		overflow-wrap: break-word;
+		hyphens: manual;
+	}
+
+	:where(a) {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	:where(b, strong) {
+		font-weight: bolder;
+	}
+
+	:where(small) {
+		font-size: 80%;
+	}
+
+	:where(sub, sup) {
+		position: relative;
+		font-size: 75%;
+		line-height: 0;
+		vertical-align: baseline;
+	}
+
+	:where(sub) {
+		bottom: -0.25em;
+	}
+
+	:where(sup) {
+		top: -0.5em;
+	}
+
+	:where(pre, code, kbd, samp) {
+		font: inherit;
+	}
+
+	:where(ol, ul) {
+		padding: 0;
+		list-style: none;
+	}
+
+	:where(table) {
+		text-indent: 0;
+		border-color: inherit;
+		border-collapse: collapse;
+	}
+
+	:where(hr) {
+		height: 0;
+		color: inherit;
+		border-top-width: 1px;
+	}
+
+	:where(abbr[title]) {
+		text-decoration: underline dotted;
+		text-decoration: underline dotted;
+	}
+
+	::-moz-focus-inner {
+		padding: 0;
+		border-style: none;
+	}
+
+	:-moz-focusring {
+		outline: auto;
+	}
+
+	:-moz-ui-invalid {
+		box-shadow: none;
+	}
+
+	:where(progress) {
+		vertical-align: baseline;
+	}
+
+	::-webkit-inner-spin-button,
+	::-webkit-outer-spin-button {
+		height: auto;
+	}
+
+	:where([type='search']) {
+		outline-offset: -2px;
+		appearance: textfield;
+	}
+
+	::-webkit-search-decoration {
+		appearance: none;
+	}
+
+	::-webkit-file-upload-button {
+		font: inherit;
+		appearance: button;
+	}
+
+	:where([hidden]) {
+		display: none;
+	}
+}
