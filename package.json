@@ -1,8 +1,12 @@
 {
   "name": "@limbo-works/nuxt-core",
   "type": "module",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "./nuxt.config.js",
+  "repository": "https://github.com/limbo-works/Limbo.Nuxt.Search.git",
+  "publishConfig": {
+	"registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
     "build": "nuxi build .playground",
