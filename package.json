@@ -1,13 +1,14 @@
 {
   "name": "@limbo-works/nuxt-core",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
     "build": "nuxi build .playground",
     "generate": "nuxi generate .playground",
     "preview": "nuxi preview .playground",
+	"lint": "eslint .",
     "lint:fix": "yarn prettier --write . && yarn eslint --fix --quiet .",
 	"test": "exit 0"
   },
