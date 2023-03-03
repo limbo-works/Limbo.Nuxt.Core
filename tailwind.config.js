@@ -1,4 +1,5 @@
 module.exports = {
+	important: true,
 	corePlugins: {
 		// We have our own preflight styles
 		preflight: false,
