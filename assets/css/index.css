@@ -1,6 +1,9 @@
 @import './preflight.css';
 @layer preflight {
+	html, body {
+		@apply w-full h-full antialiased;
+	}
 	body {
-		@apply font-sans;
+		@apply min-h-screen font-sans;
 	}
 }
