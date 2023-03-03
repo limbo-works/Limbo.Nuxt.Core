@@ -12,12 +12,6 @@ export default defineNuxtConfig({
 		plugins: [svgLoader()],
 	},
 	css: [resolve('./assets/css/index.css')],
-	proxy: {
-		enableProxy: true,
-		proxies: {
-			// docs: https://www.npmjs.com/package/@nuxtjs-alt/proxy
-		},
-	},
 	router: {
 		options: {
 			linkActiveClass: 'nuxt-link--active',
