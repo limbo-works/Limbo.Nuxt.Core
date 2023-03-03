@@ -4,6 +4,16 @@ module.exports = {
 		// We have our own preflight styles
 		preflight: false,
 	},
+	content: [
+		'./assets/**/*.{vue,js,css}',
+		'./components/**/*.{vue,js}',
+		'./layouts/**/*.vue',
+		'./pages/**/*.vue',
+		'./doctypes/**/*.vue',
+		'./server/**/*.{js,ts}',
+		'./plugins/**/*.{js,ts}',
+	],
+
 	theme: {
 		accentColor: ({ theme }) => ({
 			...theme('colors'),
