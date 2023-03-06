@@ -496,6 +496,7 @@ module.exports = {
 			none: 'none',
 			0: '0px',
 			full: '100%',
+			screen: '100vw',
 			min: 'min-content',
 			max: 'max-content',
 			fit: 'fit-content',
@@ -513,6 +514,7 @@ module.exports = {
 		minWidth: {
 			0: '0px',
 			full: '100%',
+			screen: '100vw',
 			min: 'min-content',
 			max: 'max-content',
 			fit: 'fit-content',
