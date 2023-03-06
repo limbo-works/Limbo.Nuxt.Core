@@ -20,7 +20,6 @@ export default defineNuxtConfig({
 	},
 	modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/fontaine'],
 	runtimeConfig: {
-		apiKey: '',
 		public: {
 			// These values are not protected
 			apiDomain: '',
