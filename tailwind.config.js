@@ -6,12 +6,17 @@ module.exports = {
 	},
 	content: [
 		'./assets/**/*.{vue,js,css}',
-		'./components/**/*.{vue,js}',
+		'./components/**/*.{vue,js,ts}',
 		'./layouts/**/*.vue',
 		'./pages/**/*.vue',
 		'./doctypes/**/*.vue',
-		'./server/**/*.{js,ts}',
+		'./composables/**/*.{js,ts}',
 		'./plugins/**/*.{js,ts}',
+		'./App.{js,ts,vue}',
+		'./app.{js,ts,vue}',
+		'./Error.{js,ts,vue}',
+		'./error.{js,ts,vue}',
+		'./server/**/*.{js,ts}',
 	],
 
 	theme: {
