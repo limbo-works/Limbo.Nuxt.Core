@@ -1,6 +1,6 @@
 <template>
 	<div class="nuxt-app">
-		<NuxtPage class="data-hover" />
+		<NuxtPage />
 		<NuxtLink to="/da/"> Home </NuxtLink>
 
 		<div class="group" data-hover="hover">
