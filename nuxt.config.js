@@ -9,7 +9,43 @@ export default defineNuxtConfig({
 		pageTransition: { name: 't-page', mode: 'out-in' },
 	},
 	vite: {
-		plugins: [svgLoader()],
+		plugins: [
+			svgLoader({
+				svgoConfig: {
+					plugins: [
+						{
+							name: 'mergePaths',
+							active: false,
+						},
+						{
+							name: 'removeViewBox',
+							active: false,
+						},
+						{
+							name: 'removeDimensions',
+							active: false,
+						},
+						{
+							name: 'addAttributesToSVGElement',
+							params: {
+								attributes: ['aria-hidden="true"', 'focusable="false"'],
+							},
+						},
+						{
+							name: 'prefixIds',
+							params: {
+								prefix: {
+									toString() {
+										this.counter = this.counter || 0;
+										return `svg-${this.counter++}`;
+									},
+								},
+							},
+						},
+					],
+				},
+			}),
+		],
 	},
 	css: [resolve('./assets/css/index.css')],
 	router: {
