@@ -4,6 +4,9 @@ on:
   release:
     types: [created]
 
+permissions:
+  packages: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
