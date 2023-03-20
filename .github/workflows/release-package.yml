@@ -19,7 +19,7 @@ jobs:
       - run: npm ci
       - run: npm test
         env:
-          NODE_AUTH_TOKEN: ${{ github.token }}
+          NODE_AUTH_TOKEN: ${{secret.GITHUB_TOKEN}}
 
   publish-gpr:
     needs: build
