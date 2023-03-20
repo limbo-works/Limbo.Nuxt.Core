@@ -5,6 +5,9 @@ import svgLoader from 'vite-svg-loader';
 const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
+	extends: [
+		'@limbo-works/image',
+	],
 	app: {
 		pageTransition: { name: 't-page', mode: 'out-in' },
 	},
