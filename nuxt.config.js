@@ -1,8 +1,6 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-import { createResolver } from '@nuxt/kit';
+import { fileURLToPath } from 'node:url';
 import svgLoader from 'vite-svg-loader';
-
-const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtConfig({
 	extends: [
@@ -50,7 +48,15 @@ export default defineNuxtConfig({
 			}),
 		],
 	},
-	css: [resolve('./assets/css/index.css')],
+
+	/* The fileURLToPath is necessary if the solution is to be extendable and keep that css */
+	tailwindcss: {
+		cssPath: fileURLToPath(
+			new URL('./assets/css/index.css', import.meta.url)
+		),
+	},
+	css: [fileURLToPath(new URL('./assets/css/index.css', import.meta.url))],
+
 	router: {
 		options: {
 			linkActiveClass: 'nuxt-link--active',
@@ -58,6 +64,7 @@ export default defineNuxtConfig({
 		},
 	},
 	modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/fontaine'],
+
 	runtimeConfig: {
 		public: {
 			// These values are not protected
