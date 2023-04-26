@@ -1,5 +1,5 @@
 /*
-	Last modified: 2023/02/28 09:12:05
+	Last modified: 2023/04/26 10:59:58
 
 	preflight.css is our own, custom CSS reset which takes inspiration from
 	https://www.joshwcomeau.com/css/custom-css-reset/ and the ordiary preflight
@@ -31,9 +31,12 @@
 	/*
 		No margins per default.
 		("*" has no specificity, so no :where() here)
+		And we default to inherit and set hyphens to auto on the html element.
 	*/
 	* {
 		margin: 0;
+		-webkit-hyphens: inherit;
+		hyphens: inherit;
 	}
 
 	/*
@@ -57,6 +60,9 @@
 		tab-size: 4;
 		-webkit-font-smoothing: antialiased;
 		text-size-adjust: 100%;
+
+		-webkit-hyphens: auto;
+		hyphens: auto;
 	}
 
 	/*
@@ -175,7 +181,6 @@
 			grand some editor control for hyphens.
 		*/
 		overflow-wrap: break-word;
-		hyphens: manual;
 	}
 
 	:where(a) {
