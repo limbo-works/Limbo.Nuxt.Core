@@ -2,10 +2,19 @@
 import { fileURLToPath } from 'node:url';
 import svgLoader from 'vite-svg-loader';
 
+const {
+	NUXT_PUBLIC_API_DOMAIN: API_DOMAIN,
+	NUXT_PUBLIC_LOCAL_PORT: LOCAL_PORT = 3000,
+} = process.env;
+
 export default defineNuxtConfig({
 	extends: [
 		'@limbo-works/image',
 	],
+	devServer: {
+		port: LOCAL_PORT,
+		https: API_DOMAIN?.startsWith?.('https') ? true : false,
+	},
 	app: {
 		pageTransition: { name: 't-page', mode: 'out-in' },
 	},
