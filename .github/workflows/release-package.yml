@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16.18
           registry-url: "https://npm.pkg.github.com"
-      - run: npm install --legacy-peer-deps
+      - run: npm install
         env:
           NODE_AUTH_TOKEN: ${{github.token}}
       - run: npm ci
@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: 16.18
           registry-url: https://npm.pkg.github.com/
-      - run: npm install --legacy-peer-deps
+      - run: npm install
         env:
           NODE_AUTH_TOKEN: ${{github.token}}
       - run: npm ci

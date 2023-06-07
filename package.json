@@ -1,7 +1,7 @@
 {
   "name": "@limbo-works/nuxt-core",
   "type": "module",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
@@ -12,6 +12,7 @@
     "lint:fix": "yarn prettier --write . && yarn eslint --fix --quiet .",
     "test": "exit 0"
   },
+  "overrides": { "vue": "3" },
   "dependencies": {
     "@limbo-works/image": "^0.0.2",
     "@nuxtjs/fontaine": "^0.2.4",
