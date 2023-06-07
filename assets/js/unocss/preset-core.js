@@ -1,6 +1,4 @@
 import { presetWind } from 'unocss';
-import transformerVariantGroup from '@unocss/transformer-variant-group';
-import transformerDirectives from '@unocss/transformer-directives';
 
 function presetCore(options = {}) {
 	// Assign to the default options
@@ -28,16 +26,6 @@ function presetCore(options = {}) {
 		...wind,
 
 		name: 'preset-core',
-
-		// presets: [
-		// 	wind,
-		// 	presetNoDefaultRem(),
-		// ],
-
-		transformers: [
-			transformerVariantGroup(),
-			transformerDirectives(),
-		],
 
 		theme: {
 			...wind.theme,
