@@ -58,12 +58,6 @@ export default defineNuxtConfig({
 		],
 	},
 
-	/* The fileURLToPath is necessary if the solution is to be extendable and keep that css */
-	tailwindcss: {
-		cssPath: fileURLToPath(
-			new URL('./assets/css/index.css', import.meta.url)
-		),
-	},
 	css: [fileURLToPath(new URL('./assets/css/index.css', import.meta.url))],
 
 	router: {
@@ -72,7 +66,7 @@ export default defineNuxtConfig({
 			linkExactActiveClass: 'nuxt-link--exact-active',
 		},
 	},
-	modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxtjs/fontaine'],
+	modules: ['nuxt-proxy', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/fontaine'],
 
 	runtimeConfig: {
 		public: {

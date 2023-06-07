@@ -3,8 +3,8 @@
 		<NuxtPage />
 		<NuxtLink to="/da/"> Home </NuxtLink>
 
-		<div class="group" data-hover="hover">
-			<a href="#" class="group-data-hover:text-white">
+		<div class="group text-blue" data-hover="hover">
+			<a href="#" class="group-focus-within:text-[white] p-1rem text-24">
 				Text
 			</a>
 		</div>

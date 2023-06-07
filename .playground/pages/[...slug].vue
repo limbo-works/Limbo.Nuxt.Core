@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<NuxtLayout :name="layout">
-			<div class="text-center p-4 op-50">
+			<div class="text-center p-4 opacity-100">
 				{{ $route.params.slug }}
 			</div>
 		</NuxtLayout>
