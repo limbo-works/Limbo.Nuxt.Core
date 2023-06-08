@@ -2,6 +2,10 @@ const remRE = /(-?[.\d]+)rem/g;
 
 export default function presetNoDefaultRem(options = {}) {
 	const {
+		// The base font size in pixels
+		baseFontSize = 16,
+
+		// The scalar value to use for rem to px conversion
 		scalarValue = 4,
 	} = options;
 
@@ -19,6 +23,10 @@ export default function presetNoDefaultRem(options = {}) {
 
 				// Skip if we are setting the font-size
 				if (name === 'font-size') {
+					// But convert rem to actual pixel conversion
+					if (typeof value === 'string' && !remRE.test(util.selector) && remRE.test(value)) {
+						i[1] = value.replace(remRE, (_, p1) => `${p1 * scalarValue / baseFontSize}rem`);
+					}
 					return;
 				}
 
