@@ -2,10 +2,13 @@ import { presetWind } from 'unocss';
 
 function presetCore(options = {}) {
 	// Assign to the default options
-	options = Object.assign({
-		// Breakpoints from /assets/js/breakpoints.js
-		breakpoints: {},
-	}, options);
+	options = Object.assign(
+		{
+			// Breakpoints from /assets/js/breakpoints.js
+			breakpoints: {},
+		},
+		options
+	);
 
 	// Get wind defaults with options
 	const wind = presetWind(options);
@@ -188,7 +191,7 @@ function presetCore(options = {}) {
 				}
 				return {
 					matcher: matcher.slice('group-focus-within:'.length),
-					selector: s => `.group:focus-within ${s}`,
+					selector: (s) => `.group:focus-within ${s}`,
 				};
 			},
 
@@ -199,7 +202,7 @@ function presetCore(options = {}) {
 				}
 				return {
 					matcher: matcher.slice('group-data-hover:'.length),
-					selector: s => `.group[data-hover="hover"] ${s}`,
+					selector: (s) => `.group[data-hover="hover"] ${s}`,
 				};
 			},
 
@@ -209,7 +212,7 @@ function presetCore(options = {}) {
 					matcher,
 					body: (body) => {
 						body.forEach((v) => {
-							if (v[1] && !(String(v[1]).includes('!important'))) {
+							if (v[1] && !String(v[1]).includes('!important')) {
 								v[1] += ' !important';
 							}
 						});

@@ -1,6 +1,7 @@
 @import './preflight.css';
 @layer preflight {
-	html, body {
+	html,
+	body {
 		@apply w-full h-full antialiased;
 	}
 	body {

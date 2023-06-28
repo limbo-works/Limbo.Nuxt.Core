@@ -24,15 +24,25 @@ export default function presetNoDefaultRem(options = {}) {
 				// Skip if we are setting the font-size
 				if (name === 'font-size') {
 					// But convert rem to actual pixel conversion
-					if (typeof value === 'string' && !remRE.test(util.selector) && remRE.test(value)) {
-						i[1] = value.replace(remRE, (_, p1) => `${p1 * scalarValue / baseFontSize}rem`);
+					if (
+						typeof value === 'string' &&
+						!remRE.test(util.selector) &&
+						remRE.test(value)
+					) {
+						i[1] = value.replace(
+							remRE,
+							(_, p1) => `${(p1 * scalarValue) / baseFontSize}rem`
+						);
 					}
 					return;
 				}
 
 				// Set to pixels instead
 				if (typeof value === 'string' && remRE.test(value)) {
-					i[1] = value.replace(remRE, (_, p1) => `${p1 * scalarValue}px`);
+					i[1] = value.replace(
+						remRE,
+						(_, p1) => `${p1 * scalarValue}px`
+					);
 				}
 			});
 		},

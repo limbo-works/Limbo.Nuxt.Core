@@ -1,8 +1,10 @@
 module.exports = {
+	root: true,
 	extends: [
 		// add more generic rule sets here, such as:
 		'eslint:recommended',
 		'plugin:vue/vue3-recommended',
+		'@unocss',
 		'prettier',
 	],
 	overrides: [],
@@ -26,16 +28,20 @@ module.exports = {
 		'vue/no-v-html': 0,
 		'vue/no-v-text-v-html-on-component': 0,
 		'vue/require-default-prop': 0,
+		'vue/no-multiple-template-root': 0,
 		'vue/multi-word-component-names': [
 			'error',
 			{
 				ignores: [
+					'app',
+					'App',
 					'error',
+					'default',
+					'[...]',
 					'[...slug]',
 					'[...page]',
 					'index',
-					'Default',
-					'Custom',
+					'Frontpage',
 				],
 			},
 		],

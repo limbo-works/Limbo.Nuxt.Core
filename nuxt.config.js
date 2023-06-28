@@ -8,9 +8,7 @@ const {
 } = process.env;
 
 export default defineNuxtConfig({
-	extends: [
-		'@limbo-works/image',
-	],
+	extends: ['@limbo-works/image'],
 	devServer: {
 		port: LOCAL_PORT,
 		https: API_DOMAIN?.startsWith?.('https') ? true : false,
@@ -38,7 +36,10 @@ export default defineNuxtConfig({
 						{
 							name: 'addAttributesToSVGElement',
 							params: {
-								attributes: ['aria-hidden="true"', 'focusable="false"'],
+								attributes: [
+									'aria-hidden="true"',
+									'focusable="false"',
+								],
 							},
 						},
 						{
