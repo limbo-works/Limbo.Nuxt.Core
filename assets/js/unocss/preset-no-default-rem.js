@@ -1,6 +1,6 @@
 const remRE = /(-?[.\d]+)rem/g;
 
-export default function presetNoDefaultRem(options = {}) {
+function presetNoDefaultRem(options = {}) {
 	const {
 		// The base font size in pixels
 		baseFontSize = 16,
@@ -48,3 +48,6 @@ export default function presetNoDefaultRem(options = {}) {
 		},
 	};
 }
+
+exports['default'] = presetNoDefaultRem;
+exports.presetNoDefaultRem = presetNoDefaultRem;
