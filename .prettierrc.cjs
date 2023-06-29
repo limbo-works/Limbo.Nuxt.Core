@@ -1,8 +1,1 @@
-module.exports = {
-	trailingComma: 'es5',
-	tabWidth: 4,
-	useTabs: true,
-	semi: true,
-	singleQuote: true,
-	htmlWhitespaceSensitivity: 'css',
-};
+module.exports = require('@limbo-works/lint-configs/.prettierrc.cjs');
