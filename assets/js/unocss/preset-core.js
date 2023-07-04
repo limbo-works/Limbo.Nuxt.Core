@@ -17,9 +17,8 @@ function presetCore(options = {}) {
 	const breakpoints = Object.entries(options.breakpoints || {}).reduce(
 		(accumulator, [name, { em }]) => ({
 			...accumulator,
-
 			[`>=${name}`]: `${em}em`,
-			[`<${name}`]: `(max-width: ${em - 0.01}em)`,
+			[name]: `${em}em`,
 		}),
 		{}
 	);
@@ -158,7 +157,6 @@ function presetCore(options = {}) {
 				5: '5px',
 			},
 			breakpoints: {
-				print: { raw: 'print' },
 				...breakpoints,
 			},
 			spacing: {},
