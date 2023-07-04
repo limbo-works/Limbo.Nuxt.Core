@@ -1,7 +1,7 @@
 {
   "name": "@limbo-works/nuxt-core",
   "type": "module",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
