@@ -19,7 +19,7 @@ function presetCore(options = {}) {
 			...accumulator,
 
 			[`>=${name}`]: `${em}em`,
-			[`<${name}`]: `(max-width: ${em - 0.01}em),
+			[`<${name}`]: `(max-width: ${em - 0.01}em)`,
 		}),
 		{}
 	);
