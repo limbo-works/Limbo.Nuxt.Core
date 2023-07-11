@@ -1,18 +1,28 @@
 /**
  * @function useLimboForm
- * @description Transform a standard form object into a reactive object with some extra getters.
+ * @description Transform a standard form object into an extended object with some extra getters.
  * @param  {Object} formObject formObject
+ * @param {Object} options options
  * @return {Object} improvedFormObject
  */
 export const useLimboForm = (formObject, options = {}) => {
-	options = { clone: false, populateFromQuery: false, ...(options || {}) };
-	formObject = {
-		method: null,
-		endpointUrl: null,
-		fields: [],
-		labels: {},
-		...(formObject || {}),
+	options = {
+		clone: false,
+		populateFromQuery: false,
+		setDefaultValues: true,
+		fetchOptions: null,
+		includeList: [],
+		excludeList: [],
+		...(options || {}),
 	};
+
+	// Generate the base structure and add missing properties
+	formObject = { ...(formObject || {}) };
+	formObject.title = formObject.title ?? '';
+	formObject.method = formObject.method ?? 'GET';
+	formObject.endpointUrl = formObject.endpointUrl ?? '';
+	formObject.fields = formObject.fields ?? [];
+	formObject.labels = formObject.labels ?? {};
 
 	// If we want a clone in place of changing the original object
 	if (options.clone) {
@@ -25,8 +35,10 @@ export const useLimboForm = (formObject, options = {}) => {
 	// Default options for the on-object fetch
 	const defaultFetchOptions = {
 		dataAppendage: {},
+		includeList: [],
 		excludeList: [],
 		useNativeFormDataOnPost: false,
+		...(options.fetchOptions || {}),
 	};
 
 	formObject = {
@@ -51,6 +63,13 @@ export const useLimboForm = (formObject, options = {}) => {
 				}, {}) ?? {}
 			);
 		},
+		// Get a singular field by its type
+		get fieldByType() {
+			return this.fields.reduce((acc, field) => {
+				acc[field.type] = field;
+				return acc;
+			}, {});
+		},
 		// Get an array of fields with the same type
 		get fieldsByType() {
 			return this.fields.reduce((acc, field) => {
@@ -63,6 +82,11 @@ export const useLimboForm = (formObject, options = {}) => {
 		// Add a fetch directly to the form that reads the fields and makes a request
 		async fetch(options = defaultFetchOptions) {
 			options = { ...defaultFetchOptions, ...(options || {}) };
+			const fetchOptions = { ...options };
+			delete fetchOptions.dataAppendage;
+			delete fetchOptions.includeList;
+			delete fetchOptions.excludeList;
+			delete fetchOptions.useNativeFormDataOnPost;
 
 			// Collect form data
 			const formData = new FormData();
@@ -77,6 +101,15 @@ export const useLimboForm = (formObject, options = {}) => {
 						formData.append(field.name, field.value);
 					}
 				});
+			if (options.includeList?.length) {
+				for (const [key] of formData.entries()) {
+					if (!options.includeList?.includes?.(key)) {
+						formData.delete(key);
+					}
+				}
+			}
+
+			// Append form data
 			for (const key in options.dataAppendage) {
 				if (!options.excludeList?.includes?.(key)) {
 					formData.append(key, options.dataAppendage[key]);
@@ -102,6 +135,7 @@ export const useLimboForm = (formObject, options = {}) => {
 					this.endpointUrl + endpointUrl.search,
 					{
 						method: this.method || 'GET',
+						...fetchOptions,
 					}
 				).then(({ data, error }) => {
 					// Catch errors
@@ -115,6 +149,7 @@ export const useLimboForm = (formObject, options = {}) => {
 				const data = await useFetch(this.endpointUrl, {
 					method: this.method,
 					body,
+					...fetchOptions,
 				}).then(({ data, error }) => {
 					// Catch errors
 					if (error?.value) {
@@ -126,6 +161,19 @@ export const useLimboForm = (formObject, options = {}) => {
 			}
 		},
 	};
+
+	// Remove keys depending on includes
+	if (options.includeList?.length) {
+		for (const key in formObject) {
+			if (!options.includeList.includes(key)) {
+				delete formObject[key];
+			}
+		}
+	}
+	// Remove keys depending on excludes
+	options.excludeList?.forEach((key) => {
+		delete formObject[key];
+	});
 
 	return formObject;
 };
@@ -150,12 +198,16 @@ function setFieldDefaults(fields, options) {
 		}
 
 		// Make sure each field has a default value
-		if (!('defaultValue' in field)) {
+		if (options?.setDefaultValues && !('defaultValue' in field)) {
 			field.defaultValue = field.value;
+		}
+		// Does the field have fields? (NOT LIMBO STANDARD)
+		if ('checked' in field && !('defaultChecked' in field)) {
+			field.defaultChecked = field.checked;
 		}
 
 		// Set values from query
-		if (options.populateFromQuery) {
+		if (options?.populateFromQuery) {
 			const { query } = useRoute();
 			for (const key in query) {
 				if (field.name === key) {
@@ -167,6 +219,11 @@ function setFieldDefaults(fields, options) {
 					}
 				}
 			}
+		}
+
+		// Does the field include fields of its own?
+		if ('fields' in field) {
+			setFieldDefaults(field.fields, options);
 		}
 	});
 }
