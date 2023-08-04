@@ -159,7 +159,9 @@ function presetCore(options = {}) {
 			breakpoints: {
 				...breakpoints,
 			},
-			spacing: {},
+			spacing: {
+				DEFAULT: '1px',
+			},
 			textIndent: {
 				none: '0px',
 			},
