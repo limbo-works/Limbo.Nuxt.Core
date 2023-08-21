@@ -6,6 +6,8 @@ function presetCore(options = {}) {
 		{
 			// Breakpoints from /assets/js/breakpoints.js
 			breakpoints: {},
+			// Make every rule important
+			important: false,
 		},
 		options
 	);
@@ -208,6 +210,9 @@ function presetCore(options = {}) {
 
 			// Make all the rules important per default
 			(matcher) => {
+				if (!options.important) {
+					return matcher;
+				}
 				return {
 					matcher,
 					body: (body) => {
