@@ -1,7 +1,7 @@
 {
   "name": "@limbo-works/nuxt-core",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "./nuxt.config.js",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
@@ -20,18 +20,18 @@
     "@limbo-works/lint-configs": "^1.0.2",
     "@nuxtjs/fontaine": "^0.4.1",
     "@pinia/nuxt": "^0.4.6",
-    "@unocss/nuxt": "^0.55.2",
-    "@unocss/preset-rem-to-px": "^0.55.2",
+    "@unocss/nuxt": "^0.55.3",
+    "@unocss/preset-rem-to-px": "^0.55.3",
     "@vitejs/plugin-vue": "^4.3.3",
     "clone-deep": "^4.0.1",
     "deepmerge": "^4.2.2",
     "dotenv": "^16.0.1",
-    "h3": "^1.8.0",
+    "h3": "^1.8.1",
     "nuxt-proxy": "^0.4.1",
     "pinia": "^2.1.6",
     "vite-svg-loader": "^4.0.0"
   },
   "devDependencies": {
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.7.0"
   }
 }
