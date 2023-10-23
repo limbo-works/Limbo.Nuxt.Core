@@ -9,13 +9,16 @@ const {
 
 export default defineNuxtConfig({
 	extends: ['@limbo-works/image'],
+
 	devServer: {
 		port: LOCAL_PORT,
 		https: API_DOMAIN?.startsWith?.('https') ? true : false,
 	},
+
 	app: {
 		pageTransition: { name: 't-page', mode: 'out-in' },
 	},
+
 	vite: {
 		plugins: [
 			svgLoader({
@@ -67,6 +70,7 @@ export default defineNuxtConfig({
 			linkExactActiveClass: 'nuxt-link--exact-active',
 		},
 	},
+
 	modules: ['nuxt-proxy', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/fontaine'],
 
 	runtimeConfig: {
@@ -74,6 +78,12 @@ export default defineNuxtConfig({
 			// These values are not protected
 			apiDomain: '',
 			appHost: '',
+		},
+	},
+
+	postcss: {
+		plugins: {
+			'postcss-nesting': {},
 		},
 	},
 });
