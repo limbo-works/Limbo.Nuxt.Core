@@ -34,7 +34,7 @@ export default defineNuxtConfig({
 						},
 						{
 							name: 'removeDimensions',
-							active: false,
+							active: true,
 						},
 						{
 							name: 'addAttributesToSVGElement',
