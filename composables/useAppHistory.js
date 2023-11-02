@@ -9,7 +9,7 @@ export const useAppHistory = () => {
 		backUrl: null,
 		currentUrl: route.fullPath,
 		forwardUrl: null,
-		position: 0,
+		position: null,
 
 		// And additionals
 		get hasHistory() {
