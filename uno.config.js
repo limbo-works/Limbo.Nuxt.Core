@@ -7,4 +7,13 @@ import transformerDirectives from '@unocss/transformer-directives';
 export default defineConfig({
 	presets: [presetCore(), presetNoDefaultRem()],
 	transformers: [transformerVariantGroup(), transformerDirectives()],
+
+	content: {
+		filesystem: [
+			'**/*.css',
+			'components/**/*.vue',
+			'pages/**/*.vue',
+			'layouts/**/*.vue',
+		],
+	},
 });
