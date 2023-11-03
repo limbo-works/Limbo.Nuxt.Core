@@ -30,6 +30,7 @@
     "nuxt-proxy": "^0.4.1",
     "pinia": "^2.1.7",
     "postcss-nesting": "^12.0.1",
+    "unocss": "^0.57.1",
     "vite-svg-loader": "^4.0.0"
   },
   "devDependencies": {
