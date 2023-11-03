@@ -9,11 +9,6 @@ export default defineConfig({
 	transformers: [transformerVariantGroup(), transformerDirectives()],
 
 	content: {
-		filesystem: [
-			'**/*.css',
-			'components/**/*.vue',
-			'pages/**/*.vue',
-			'layouts/**/*.vue',
-		],
+		filesystem: ['**/*.{css,vue}'],
 	},
 });
