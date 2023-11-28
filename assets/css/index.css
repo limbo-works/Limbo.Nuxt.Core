@@ -1,5 +1,4 @@
 @import './preflight.css';
-@unocss;
 
 @layer preflight {
 	html,

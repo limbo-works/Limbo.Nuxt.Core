@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	modules: ['nuxt-proxy', '@pinia/nuxt', '@nuxtjs/fontaine'],
+	modules: ['nuxt-proxy', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/fontaine'],
 
 	runtimeConfig: {
 		public: {
@@ -84,7 +84,6 @@ export default defineNuxtConfig({
 	postcss: {
 		plugins: {
 			'postcss-nesting': {},
-			'@unocss/postcss': {},
 		},
 	},
 });
