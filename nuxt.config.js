@@ -71,7 +71,7 @@ export default defineNuxtConfig({
 		},
 	},
 
-	modules: ['nuxt-proxy', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/fontaine'],
+	modules: ['nuxt-proxy', '@pinia/nuxt', '@nuxtjs/fontaine'],
 
 	runtimeConfig: {
 		public: {
