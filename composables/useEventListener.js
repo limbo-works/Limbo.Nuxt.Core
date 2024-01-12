@@ -1,16 +1,26 @@
 import { onMounted, onBeforeUnmount, isRef } from 'vue';
 
 export function useEventListener(...args) {
-	let [targets, event, callback, immediate] = [
+	let [targets, event, callback, options] = [
 		typeof args[1] === 'string' ? args.shift() : undefined,
 		...args,
 	];
+
+	// Make sure we are working with an options object
+	options =
+		typeof options === 'boolean'
+			? { capture: options }
+			: typeof options === 'object'
+			? { ...options }
+			: {};
+	const { immediate } = options;
+	delete options.immediate;
 
 	onMounted(() => {
 		setTimeout(() => {
 			targets = resolveTargets(targets);
 			targets?.forEach((target) =>
-				target.addEventListener(event, callback)
+				target.addEventListener(event, callback, options)
 			);
 			immediate && callback();
 		});
@@ -18,7 +28,7 @@ export function useEventListener(...args) {
 
 	onBeforeUnmount(() => {
 		targets?.forEach((target) =>
-			target.removeEventListener(event, callback)
+			target.removeEventListener(event, callback, !!options?.capture)
 		);
 	});
 }
