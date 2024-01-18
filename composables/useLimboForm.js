@@ -93,12 +93,14 @@ export const useLimboForm = (formObject, options = {}) => {
 			this.fields
 				.filter((field) => {
 					return (
-						field && !options.excludeList?.includes?.(field.name)
+						field &&
+						!options.excludeList?.includes?.(field.name) &&
+						!['button', 'submit'].includes(field.type)
 					);
 				})
 				.forEach((field) => {
 					if (field.name) {
-						formData.append(field.name, field.value);
+						formData.set(field.name, field.value);
 					}
 				});
 			if (options.includeList?.length) {
@@ -112,7 +114,7 @@ export const useLimboForm = (formObject, options = {}) => {
 			// Append form data
 			for (const key in options.dataAppendage) {
 				if (!options.excludeList?.includes?.(key)) {
-					formData.append(key, options.dataAppendage[key]);
+					formData.set(key, options.dataAppendage[key]);
 				}
 			}
 
@@ -181,10 +183,18 @@ export default useLimboForm;
 
 function setFieldDefaults(fields, options) {
 	fields?.forEach((field) => {
+		// Make sure each field has a default value
+		if (options?.setDefaultValues && !('defaultValue' in field)) {
+			field.defaultValue =
+				'value' in field
+					? field.value
+					: field.items?.find((item) => !item.value)?.value;
+		}
+
 		// Make sure each field has a value
 		if (!('value' in field)) {
-			field.value = field.defaultValue ?? null;
-			if (field.items) {
+			field.value = field.defaultValue;
+			if (field.items?.length) {
 				const array = field.items.reduce((acc, item) => {
 					if (item.checked) {
 						acc.push(item.value);
@@ -193,17 +203,8 @@ function setFieldDefaults(fields, options) {
 				}, []);
 				field.value = array.length
 					? array.join(',')
-					: field.defaultValue ?? null;
+					: field.defaultValue;
 			}
-		}
-
-		// Make sure each field has a default value
-		if (options?.setDefaultValues && !('defaultValue' in field)) {
-			field.defaultValue = field.value;
-		}
-		// Does the field have fields? (NOT LIMBO STANDARD)
-		if ('checked' in field && !('defaultChecked' in field)) {
-			field.defaultChecked = field.checked;
 		}
 
 		// Set values from query
@@ -227,3 +228,34 @@ function setFieldDefaults(fields, options) {
 		}
 	});
 }
+
+/**
+ * @function useLimboFormLink
+ * @description Transform a standard form object into a reactive object with some extra getters.
+ * @param  {Object} formObject formObject
+ * @param  {Object} injectData injectData
+ * @return {String} resolvedUrl
+ */
+export const useLimboFormLink = (formObject, injectData) => {
+	injectData = injectData || {};
+
+	if (formObject?.endpointUrl) {
+		if (formObject?.fields?.length) {
+			const queryArray = formObject.fields.reduce((acc, field) => {
+				if (field.name && field.value) {
+					let value = String(field.value);
+					for (const key in injectData) {
+						value = value.replace(`{${key}}`, injectData[key]);
+					}
+					acc.push(`${field.name}=${value}`);
+				}
+				return acc;
+			}, []);
+			return [formObject.endpointUrl, queryArray.join('&')]
+				.filter(Boolean)
+				.join('?');
+		}
+		return formObject?.endpointUrl;
+	}
+	return '';
+};
