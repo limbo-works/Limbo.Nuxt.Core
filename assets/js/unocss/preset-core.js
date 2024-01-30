@@ -1,4 +1,4 @@
-import { presetWind } from 'unocss';
+import presetWind from '@unocss/preset-wind';
 
 function presetCore(options = {}) {
 	// Assign to the default options

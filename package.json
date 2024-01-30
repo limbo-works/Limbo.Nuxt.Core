@@ -21,6 +21,7 @@
     "@nuxtjs/fontaine": "^0.4.1",
     "@pinia/nuxt": "^0.5.1",
     "@unocss/preset-rem-to-px": "^0.58.3",
+    "@unocss/preset-wind": "^0.58.4",
     "@vitejs/plugin-vue": "^5.0.3",
     "clone-deep": "^4.0.1",
     "deepmerge": "^4.2.2",

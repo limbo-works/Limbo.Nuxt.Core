@@ -1451,6 +1451,11 @@
   resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.58.3.tgz#1f20c2bb585d488a74351df544e8b35d05bc5594"
   integrity sha512-9hTxzsrSLh+07ql/lGhE+8ZbE9MTTeZeMx131cPf2jDJUxAZooLE5pBCoK0k77ZJGcribRrwPGkUScBNOK0cYQ==
 
+"@unocss/core@0.58.4", "@unocss/core@^0.58.4":
+  version "0.58.4"
+  resolved "https://registry.yarnpkg.com/@unocss/core/-/core-0.58.4.tgz#1f1096c40f785412df28d6420c8148fff375d5a9"
+  integrity sha512-wh4pxXUCkhC+C/0ct74PMYeZgX+oWuHj2mnvr09nM0WmvOm1HeeISrDCCBGcxmKbErUk+D1v3JgzXF7b6j2l4g==
+
 "@unocss/eslint-config@^0.53.4":
   version "0.53.6"
   resolved "https://registry.yarnpkg.com/@unocss/eslint-config/-/eslint-config-0.53.6.tgz#c30ca1b65d1521b7c04c1c17e694633bd56d6c85"
@@ -1469,12 +1474,45 @@
     magic-string "^0.30.1"
     synckit "^0.8.5"
 
+"@unocss/extractor-arbitrary-variants@0.58.4":
+  version "0.58.4"
+  resolved "https://registry.yarnpkg.com/@unocss/extractor-arbitrary-variants/-/extractor-arbitrary-variants-0.58.4.tgz#b364fc8c8c20af532cf83a26fb1d5e7499422d55"
+  integrity sha512-TQlVtSQk8YdBU9KuTA5k6JBJ8d/aPrIsCWjDPfBvAqDvrll/dzwBCLoLTQMdCHFjCXCOYWKPum1ET+Wn9R+XbA==
+  dependencies:
+    "@unocss/core" "0.58.4"
+
+"@unocss/preset-mini@0.58.4":
+  version "0.58.4"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-mini/-/preset-mini-0.58.4.tgz#0963c46fb941cf3786f0ba9c97fc68bb6d7ea9ec"
+  integrity sha512-cpIWUYxLi4VCkkjxpNJOVqH9D32NX1ebRFaoAVnvCRsoj5TRsZJSdxs0WMN7reHT/CUHh0Wh6d3TfMCFxzbZ4g==
+  dependencies:
+    "@unocss/core" "0.58.4"
+    "@unocss/extractor-arbitrary-variants" "0.58.4"
+    "@unocss/rule-utils" "0.58.4"
+
 "@unocss/preset-rem-to-px@^0.58.3":
   version "0.58.3"
   resolved "https://registry.yarnpkg.com/@unocss/preset-rem-to-px/-/preset-rem-to-px-0.58.3.tgz#817c4421bcacf25bb459ea526640707ee0fce281"
   integrity sha512-1TFhQ03JsCXNGttAS5BgNzoR3pQrBJ8FBuMjblLdpajDOslZ37Ckpt5GBdTVVRxcxlUeyvDwOiOZ7gEAyXEjuQ==
   dependencies:
     "@unocss/core" "0.58.3"
+
+"@unocss/preset-wind@^0.58.4":
+  version "0.58.4"
+  resolved "https://registry.yarnpkg.com/@unocss/preset-wind/-/preset-wind-0.58.4.tgz#4c5528e4a5051ef478f19a192eb5415184a693f7"
+  integrity sha512-e2F0HsqPXw+nD85MKIZ63mx5yUx5g8iPOtMw9/eEUeK67HrD+jFxeLq0hAM3ou3a4589QIzeg23LXAkM7gCzvg==
+  dependencies:
+    "@unocss/core" "0.58.4"
+    "@unocss/preset-mini" "0.58.4"
+    "@unocss/rule-utils" "0.58.4"
+
+"@unocss/rule-utils@0.58.4":
+  version "0.58.4"
+  resolved "https://registry.yarnpkg.com/@unocss/rule-utils/-/rule-utils-0.58.4.tgz#7585791213c01e35e7ea2703928f39f681ea40c5"
+  integrity sha512-52Jp4I+joGTaDm7ehB/7uZ2kJL+9BZcYRDUVk4IDacDH5W9yxf1F75LzYT8jJVWXD/HIhiS0r9V6qhcBq2OWZw==
+  dependencies:
+    "@unocss/core" "^0.58.4"
+    magic-string "^0.30.5"
 
 "@vercel/nft@^0.24.3":
   version "0.24.4"
