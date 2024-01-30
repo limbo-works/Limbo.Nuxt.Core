@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.2.1...v2.2.2) (2024-01-30)
+
+
+### Bug Fixes
+
+* better defaultValue setup ([4596ca6](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4596ca64d9d9ddd804f0d922defc51423e1a643c))
+* changed reference to preset-wind ([3393c27](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/3393c27a31b6363fffa6a69514c7628e50c9be48))
+
 ## [2.2.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.2.0...v2.2.1) (2024-01-16)
 
 
