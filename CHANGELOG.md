@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.2.2...v2.3.0) (2024-02-05)
+
+
+### Features
+
+* various ID generation utilities ([dd233b6](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/dd233b6c3a80275fd9fffa6b958ab7b0bf8fce77))
+
+
+### Bug Fixes
+
+* return value directly for ids ([e420343](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/e42034364dacf88037e640e265e8775254bb6ce0))
+
 ## [2.2.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.2.1...v2.2.2) (2024-01-30)
 
 
