@@ -9,6 +9,6 @@ function useGUID(key = useId()) {
 				return v.toString(16);
 			}
 		);
-	});
+	}).value;
 }
 export default useGUID;
