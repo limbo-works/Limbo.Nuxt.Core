@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.3.0...v2.4.0) (2024-02-08)
+
+
+### Features
+
+* added composable `useEventBus` ([977f02a](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/977f02a8feea15077f899b6859ca8e3be4e2f16f))
+
 ## [2.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.2.2...v2.3.0) (2024-02-05)
 
 
