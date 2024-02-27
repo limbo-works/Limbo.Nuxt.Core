@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.4.0...v2.5.0) (2024-02-27)
+
+
+### Features
+
+* added address rule to preflight to not make italic ([6594f52](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/6594f529abf183888d69aa7b042a2da2f5616470))
+
 ## [2.4.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.3.0...v2.4.0) (2024-02-08)
 
 
