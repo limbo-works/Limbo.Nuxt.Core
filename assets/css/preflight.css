@@ -1,6 +1,4 @@
 /*
-	Last modified: 2023/04/26 10:59:58
-
 	preflight.css is our own, custom CSS reset which takes inspiration from
 	https://www.joshwcomeau.com/css/custom-css-reset/ and the ordiary preflight
 	https://v2.tailwindcss.com/docs/preflight. We use this instead of Tailwind's
@@ -271,6 +269,10 @@
 	::-webkit-file-upload-button {
 		font: inherit;
 		appearance: button;
+	}
+
+	:where(address) {
+		font-style: normal;
 	}
 
 	:where([hidden]) {
