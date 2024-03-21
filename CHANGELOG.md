@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.6.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.5.0...v2.6.0) (2024-03-21)
+
+
+### Features
+
+* added useAttrsExcept and useAttrsSome ([64bde25](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/64bde258ad88595fa2355ab17f1183e61f197514))
+* updated packages ([ea8e17e](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/ea8e17e080c9ef0777c63745ce0b8f972275fa5a))
+
 ## [2.5.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.4.0...v2.5.0) (2024-02-27)
 
 
