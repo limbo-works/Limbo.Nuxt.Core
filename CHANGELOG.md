@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.0...v2.6.1) (2024-05-03)
+
+
+### Bug Fixes
+
+* added second argument and warning to useAttrs- functions ([9e658d2](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/9e658d2c2b001d930cda99e813d631ebc973f7af))
+
 ## [2.6.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.5.0...v2.6.0) (2024-03-21)
 
 
