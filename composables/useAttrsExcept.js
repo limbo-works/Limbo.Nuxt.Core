@@ -1,6 +1,9 @@
-export const useAttrsExcept = (excludes) => {
-	const attrs = useAttrs();
+export default function useAttrsExcept(excludes, $attrs) {
+	/* useAttrs() causes problems, so do pass in $attrs */
+	const attrs = $attrs || useAttrs();
 	const attrsToReturn = reactive({});
+
+	!$attrs && console.warn('useAttrsExcept() needs a second argument, an attrs object, to function properly. UseAttrs() causes problems.')
 
 	watch(
 		() => attrs,
@@ -17,4 +20,4 @@ export const useAttrsExcept = (excludes) => {
 	);
 
 	return attrsToReturn;
-};
+}
