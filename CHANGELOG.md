@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.1...v2.6.2) (2024-05-29)
+
+
+### Bug Fixes
+
+* improved app history composable slightly ([d52335c](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d52335cc2e9cae69382db1a7f1fc62af3b77dc45))
+
 ## [2.6.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.0...v2.6.1) (2024-05-03)
 
 
