@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.7.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.2...v2.7.0) (2024-06-10)
+
+
+### Features
+
+* added helper functions ([888f1a7](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/888f1a77899163316305dfc1badd342b8dfbaffe))
+
+
+### Bug Fixes
+
+* made GUID and number id composables non-reliant on useId ([bcfbe06](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/bcfbe063dce459b3d56b3be6626e83ac306d48f1))
+
 ## [2.6.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.1...v2.6.2) (2024-05-29)
 
 
