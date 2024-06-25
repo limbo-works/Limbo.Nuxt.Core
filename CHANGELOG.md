@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.7.0...v2.8.0) (2024-06-25)
+
+
+### Features
+
+* add default compression to assets ([0ceffb7](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/0ceffb7a86e1514ac321d23c86957348f59c07ed))
+
 ## [2.7.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.6.2...v2.7.0) (2024-06-10)
 
 
