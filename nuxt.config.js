@@ -80,7 +80,12 @@ export default defineNuxtConfig({
 			appHost: '',
 		},
 	},
-
+	nitro: {
+		compressPublicAssets: {
+			gzip: true,
+			brotli: true,
+		},
+	},
 	postcss: {
 		plugins: {
 			'postcss-nesting': {},
