@@ -188,7 +188,8 @@ function setFieldDefaults(fields, options) {
 			field.defaultValue =
 				'value' in field
 					? field.value
-					: field.items?.find((item) => !item.value)?.value;
+					: field.items?.find((item) => item.checked)?.value ??
+					  field.items?.find((item) => !item.value)?.value;
 		}
 
 		// Make sure each field has a value
