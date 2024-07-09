@@ -8,12 +8,43 @@ function presetCore(options = {}) {
 			breakpoints: {},
 			// Make every rule important
 			important: false,
+			// Overwrite rules
+			ruleOverwrites: [],
 		},
 		options
 	);
 
 	// Get wind defaults with options
 	const wind = presetWind(options);
+	const ruleOverwrites = [
+		// Rules for avoiding 'c-' and 'color-' for setting colors
+		{
+			test:  (rule) => {
+				return String(rule?.[0]).includes('color|c');
+			},
+			overwrite: (oldRule) => {
+				if (String(oldRule[0]).includes('(?:color|c)')) {
+					return null;
+				}
+
+				const newRule = [...oldRule];
+				const oldRegExp = String(oldRule[0]).replace('|color|c', '');
+				newRule[0] = new RegExp(oldRegExp.substring(1, oldRegExp.length - 1));
+
+				return newRule;
+			}
+		},
+		// Rules from options
+		...(options.ruleOverwrites || [])
+	];
+	wind.rules = wind.rules?.map?.(rule => {
+		rule && ruleOverwrites?.forEach?.(overwriter => {
+			if (rule && overwriter?.test?.(rule)) {
+				rule = overwriter?.overwrite?.(rule);
+			}
+		});
+		return rule;
+	})?.filter?.(rule => rule) ?? [];
 
 	// Make the breakpoints based on the breakpoints
 	const breakpoints = Object.entries(options.breakpoints || {}).reduce(

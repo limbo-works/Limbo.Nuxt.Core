@@ -17,6 +17,9 @@
 	</div>
 </template>
 
+<script setup>
+</script>
+
 <style lang="postcss">
 .nuxt-app {
 	& .nuxt-app__title {

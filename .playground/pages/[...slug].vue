@@ -12,8 +12,6 @@
 const route = useRoute();
 const layout = 'default';
 
-console.log(useGUID(), useNumberId());
-
 definePageMeta({
 	layout: false,
 	key: (route) => route.path,
