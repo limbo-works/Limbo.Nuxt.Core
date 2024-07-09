@@ -3,12 +3,15 @@ import { fileURLToPath } from 'node:url';
 import svgLoader from 'vite-svg-loader';
 
 const {
+	NODE_ENV = 'production',
 	NUXT_PUBLIC_API_DOMAIN: API_DOMAIN,
 	NUXT_PUBLIC_LOCAL_PORT: LOCAL_PORT = 3000,
+	NUXT_PUBLIC_SHOW_DEBUG_ERRORS = NODE_ENV !== 'production',
 } = process.env;
 
 export default defineNuxtConfig({
 	extends: ['@limbo-works/image'],
+	debug: NUXT_PUBLIC_SHOW_DEBUG_ERRORS,
 
 	devServer: {
 		port: LOCAL_PORT,
@@ -78,6 +81,7 @@ export default defineNuxtConfig({
 			// These values are not protected
 			apiDomain: '',
 			appHost: '',
+			showDebugErrors: NODE_ENV !== 'production',
 		},
 	},
 	nitro: {
