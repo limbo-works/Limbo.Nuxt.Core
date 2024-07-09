@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.9.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.8.0...v2.9.0) (2024-07-09)
+
+
+### Features
+
+* added env-controlled debug mode ([b3a0651](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/b3a065104edec5e62eaed1f7324ad618dfa62951))
+* added overwrites to uno ([992b7b5](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/992b7b58320645d4f8fcb2bdfdd8a686927e2549))
+
 ## [2.8.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.7.0...v2.8.0) (2024-07-03)
 
 
