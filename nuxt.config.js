@@ -6,12 +6,12 @@ const {
 	NODE_ENV = 'production',
 	NUXT_PUBLIC_API_DOMAIN: API_DOMAIN,
 	NUXT_PUBLIC_LOCAL_PORT: LOCAL_PORT = 3000,
-	NUXT_PUBLIC_SHOW_DEBUG_ERRORS = NODE_ENV !== 'production',
+	NUXT_PUBLIC_DEBUG_MODE = false,
 } = process.env;
 
 export default defineNuxtConfig({
 	extends: ['@limbo-works/image'],
-	debug: NUXT_PUBLIC_SHOW_DEBUG_ERRORS,
+	debug: NUXT_PUBLIC_DEBUG_MODE,
 
 	devServer: {
 		port: LOCAL_PORT,
