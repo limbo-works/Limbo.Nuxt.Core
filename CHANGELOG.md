@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.1...v2.9.2) (2024-08-09)
+
+
+### Bug Fixes
+
+* completed renaming ([4557e6f](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4557e6f923882d72c474109801b26924e1265f01))
+
 ## [2.9.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.0...v2.9.1) (2024-08-09)
 
 
