@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.0...v2.9.1) (2024-08-09)
+
+
+### Bug Fixes
+
+* renamed env for debug mode and made default to false ([f5e19a2](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/f5e19a2c8e65431cfeccea8bd34ca6e599c29e4d))
+
 ## [2.9.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.8.0...v2.9.0) (2024-07-09)
 
 
