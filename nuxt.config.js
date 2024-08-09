@@ -81,7 +81,7 @@ export default defineNuxtConfig({
 			// These values are not protected
 			apiDomain: '',
 			appHost: '',
-			showDebugErrors: NODE_ENV !== 'production',
+			debugMode: NODE_ENV !== 'production',
 		},
 	},
 	nitro: {
