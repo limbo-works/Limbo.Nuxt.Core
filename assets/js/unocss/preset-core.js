@@ -19,7 +19,7 @@ function presetCore(options = {}) {
 	const ruleOverwrites = [
 		// Rules for avoiding 'c-' and 'color-' for setting colors
 		{
-			test:  (rule) => {
+			test: (rule) => {
 				return String(rule?.[0]).includes('color|c');
 			},
 			overwrite: (oldRule) => {
@@ -29,22 +29,28 @@ function presetCore(options = {}) {
 
 				const newRule = [...oldRule];
 				const oldRegExp = String(oldRule[0]).replace('|color|c', '');
-				newRule[0] = new RegExp(oldRegExp.substring(1, oldRegExp.length - 1));
+				newRule[0] = new RegExp(
+					oldRegExp.substring(1, oldRegExp.length - 1)
+				);
 
 				return newRule;
-			}
+			},
 		},
 		// Rules from options
-		...(options.ruleOverwrites || [])
+		...(options.ruleOverwrites || []),
 	];
-	wind.rules = wind.rules?.map?.(rule => {
-		rule && ruleOverwrites?.forEach?.(overwriter => {
-			if (rule && overwriter?.test?.(rule)) {
-				rule = overwriter?.overwrite?.(rule);
-			}
-		});
-		return rule;
-	})?.filter?.(rule => rule) ?? [];
+	wind.rules =
+		wind.rules
+			?.map?.((rule) => {
+				rule &&
+					ruleOverwrites?.forEach?.((overwriter) => {
+						if (rule && overwriter?.test?.(rule)) {
+							rule = overwriter?.overwrite?.(rule);
+						}
+					});
+				return rule;
+			})
+			?.filter?.((rule) => rule) ?? [];
 
 	// Make the breakpoints based on the breakpoints
 	const breakpoints = Object.entries(options.breakpoints || {}).reduce(

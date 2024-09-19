@@ -11,8 +11,8 @@ export function useEventListener(...args) {
 		typeof options === 'boolean'
 			? { capture: options }
 			: typeof options === 'object'
-			? { ...options }
-			: {};
+				? { ...options }
+				: {};
 	const { immediate } = options;
 	delete options.immediate;
 

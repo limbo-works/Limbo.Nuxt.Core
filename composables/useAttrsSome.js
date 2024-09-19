@@ -3,7 +3,10 @@ export default function useAttrsSome(subset, $attrs) {
 	const attrs = $attrs || useAttrs();
 	const attrsToReturn = reactive({});
 
-	!$attrs && console.warn('useAttrsSome() needs a second argument, an attrs object, to function properly. UseAttrs() causes problems.')
+	!$attrs &&
+		console.warn(
+			'useAttrsSome() needs a second argument, an attrs object, to function properly. UseAttrs() causes problems.'
+		);
 
 	watch(
 		() => attrs,
