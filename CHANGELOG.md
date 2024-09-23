@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.3...v3.0.4) (2024-09-23)
+
+
+### Bug Fixes
+
+* reintroduced overrides ([50dfb07](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/50dfb0726e77d3d1832c64dc151c375c568a3f48))
+
 ## [3.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.2...v3.0.3) (2024-09-23)
 
 
