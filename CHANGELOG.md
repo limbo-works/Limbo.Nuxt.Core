@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.0...v2.11.1) (2024-09-23)
+
+
+### Bug Fixes
+
+* moved default presets as well ([7182235](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/718223513c456b391067b29b10cd35719398ad70))
+
 ## [2.11.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.10.0...v2.11.0) (2024-09-23)
 
 
