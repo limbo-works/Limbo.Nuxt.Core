@@ -22,6 +22,7 @@
     "@pinia/nuxt": "^0.5.4",
     "@unocss/preset-rem-to-px": "^0.62.4",
     "@unocss/preset-wind": "^0.62.4",
+    "@unocss/transformer-variant-group": "^0.62.4",
     "@vitejs/plugin-vue": "^5.1.4",
     "clone-deep": "^4.0.1",
     "deepmerge": "^4.2.2",

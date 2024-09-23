@@ -1,5 +1,8 @@
 import presetWind from '@unocss/preset-wind';
 
+import transformerVariantGroup from '@unocss/transformer-variant-group';
+import transformerDirectives from './TransformerDirectives';
+
 function presetCore(options = {}) {
 	// Assign to the default options
 	options = Object.assign(
@@ -67,6 +70,8 @@ function presetCore(options = {}) {
 		...wind,
 
 		name: 'preset-core',
+
+		transformers: [...(wind.transformers || []), transformerVariantGroup(), transformerDirectives()],
 
 		theme: {
 			...wind.theme,
