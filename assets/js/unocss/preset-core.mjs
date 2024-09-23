@@ -1,8 +1,8 @@
 import presetWind from '@unocss/preset-wind';
-import presetNoDefaultRem from './preset-no-default-rem';
+import presetNoDefaultRem from './preset-no-default-rem.mjs';
 
 import transformerVariantGroup from '@unocss/transformer-variant-group';
-import transformerDirectives from './TransformerDirectives/index';
+import transformerDirectives from './TransformerDirectives/index.mjs';
 
 function presetCore(options = {}) {
 	// Assign to the default options
@@ -273,5 +273,5 @@ function presetCore(options = {}) {
 	};
 }
 
-exports['default'] = presetCore;
-exports.presetCore = presetCore;
+export default presetCore;
+export { presetCore };

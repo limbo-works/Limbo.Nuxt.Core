@@ -49,5 +49,5 @@ function presetNoDefaultRem(options = {}) {
 	};
 }
 
-exports['default'] = presetNoDefaultRem;
-exports.presetNoDefaultRem = presetNoDefaultRem;
+export default presetNoDefaultRem;
+export { presetNoDefaultRem };
