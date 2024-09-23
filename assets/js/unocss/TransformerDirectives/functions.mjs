@@ -10,9 +10,17 @@ export function handleFunction(context, node) {
 			throw new Error('theme() expect exact one argument');
 
 		const themeStr = node.children.first.value;
-		const value = transformThemeString(themeStr, uno.config.theme, throwOnMissing);
+		const value = transformThemeString(
+			themeStr,
+			uno.config.theme,
+			throwOnMissing
+		);
 		if (value)
-			code.overwrite(node.loc.start.offset, node.loc.end.offset, value);
+			code.overwrite(
+				node.loc.start.offset,
+				node.loc.end.offset,
+				value
+			);
 	}
 	}
 }

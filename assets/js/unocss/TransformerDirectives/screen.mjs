@@ -7,8 +7,7 @@ export function handleScreen({ code, uno }, node) {
 	if (node.name === 'screen' && node.prelude?.type === 'Raw')
 		breakpointName = node.prelude.value.trim();
 
-	if (!breakpointName)
-		return;
+	if (!breakpointName) return;
 
 	const match = breakpointName.match(/^(?:(lt|at)-)?(\w+)$/);
 	if (match) {
@@ -29,44 +28,49 @@ export function handleScreen({ code, uno }, node) {
 		if (uno.userConfig && uno.userConfig.theme)
 			breakpoints = uno.userConfig.theme.breakpoints;
 
-		if (!breakpoints)
-			breakpoints = uno.config.theme.breakpoints;
+		if (!breakpoints) breakpoints = uno.config.theme.breakpoints;
 
 		return breakpoints
 			? Object.entries(breakpoints)
-				.sort((a, b) => Number.parseInt(a[1].replace(/[a-z]+/gi, '')) - Number.parseInt(b[1].replace(/[a-z]+/gi, '')))
+				.sort(
+					(a, b) =>
+						Number.parseInt(a[1].replace(/[a-z]+/gi, '')) -
+							Number.parseInt(b[1].replace(/[a-z]+/gi, ''))
+				)
 				.map(([point, size]) => ({ point, size }))
 			: undefined;
 	};
-	const variantEntries = (resolveBreakpoints() ?? []).map(({ point, size }, idx) => [point, size, idx]);
+	const variantEntries = (resolveBreakpoints() ?? []).map(
+		({ point, size }, idx) => [point, size, idx]
+	);
 	const generateMediaQuery = (breakpointName, prefix) => {
-		const [, size, idx] = variantEntries.find(i => i[0] === breakpointName);
+		const [, size, idx] = variantEntries.find(
+			(i) => i[0] === breakpointName
+		);
 		if (prefix) {
 			if (prefix === 'lt')
 				return `@media (max-width: ${calcMaxWidthBySize(size)})`;
 			else if (prefix === 'at')
 				return `@media (min-width: ${size})${variantEntries[idx + 1] ? ` and (max-width: ${calcMaxWidthBySize(variantEntries[idx + 1][1])})` : ''}`;
-
 			else throw new Error(`breakpoint variant not supported: ${prefix}`);
 		}
 		return `@media (min-width: ${size})`;
 	};
 
-	if (!variantEntries.find(i => i[0] === breakpointName))
+	if (!variantEntries.find((i) => i[0] === breakpointName))
 		throw new Error(`breakpoint ${breakpointName} not found`);
 
-	const {offset} = node.loc.start;
+	const { offset } = node.loc.start;
 	const str = code.original.slice(offset, node.loc.end.offset);
 	const matches = Array.from(str.matchAll(screenRuleRE));
 
-	if (!matches.length)
-		return;
+	if (!matches.length) return;
 
 	for (const match of matches) {
 		code.overwrite(
 			offset + match.index,
 			offset + match.index + match[1].length,
-			`${generateMediaQuery(breakpointName, prefix)}`,
+			`${generateMediaQuery(breakpointName, prefix)}`
 		);
 	}
 }
@@ -74,6 +78,6 @@ export function handleScreen({ code, uno }, node) {
 function calcMaxWidthBySize(size) {
 	const value = size.match(/^-?\d+\.?\d*/)?.[0] || '';
 	const unit = size.slice(value.length);
-	const maxWidth = (Number.parseFloat(value) - 0.1);
+	const maxWidth = Number.parseFloat(value) - 0.1;
 	return Number.isNaN(maxWidth) ? size : `${maxWidth}${unit}`;
 }

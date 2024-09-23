@@ -2,47 +2,41 @@
 
 ## [3.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.0...v3.0.1) (2024-09-23)
 
-
 ### Bug Fixes
 
-* transformed from typescript ([264233b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/264233b3819b37a7a543f81a69fdffe75a66f259))
+-   transformed from typescript ([264233b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/264233b3819b37a7a543f81a69fdffe75a66f259))
 
 ## [3.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.1...v3.0.0) (2024-09-23)
 
-
 ### ⚠ BREAKING CHANGES
 
-* now it's know that the unocss things are modules
+-   now it's know that the unocss things are modules
 
 ### Bug Fixes
 
-* now it's know that the unocss things are modules ([d17d5a0](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d17d5a019a9c1ee6059ef4e02ae95bd8d754ce0f))
+-   now it's know that the unocss things are modules ([d17d5a0](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d17d5a019a9c1ee6059ef4e02ae95bd8d754ce0f))
 
 ## [2.11.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.0...v2.11.1) (2024-09-23)
 
-
 ### Bug Fixes
 
-* moved default presets as well ([7182235](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/718223513c456b391067b29b10cd35719398ad70))
+-   moved default presets as well ([7182235](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/718223513c456b391067b29b10cd35719398ad70))
 
 ## [2.11.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.10.0...v2.11.0) (2024-09-23)
 
-
 ### Features
 
-* updated unocss preset with default transformers ([ab1d6af](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/ab1d6af2381d5203b41078408fbbf0e13d7f7ae1))
+-   updated unocss preset with default transformers ([ab1d6af](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/ab1d6af2381d5203b41078408fbbf0e13d7f7ae1))
 
 ## [2.10.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.1...v2.10.0) (2024-09-19)
 
-
 ### Features
 
-* upgraded packages to latest packages ([cd167ed](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/cd167edad539bde756a57bd0afbafe56675b4fdf))
-
+-   upgraded packages to latest packages ([cd167ed](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/cd167edad539bde756a57bd0afbafe56675b4fdf))
 
 ### Bug Fixes
 
-* completed renaming ([4557e6f](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4557e6f923882d72c474109801b26924e1265f01))
+-   completed renaming ([4557e6f](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4557e6f923882d72c474109801b26924e1265f01))
 
 ## [2.9.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.0...v2.9.1) (2024-08-09)
 

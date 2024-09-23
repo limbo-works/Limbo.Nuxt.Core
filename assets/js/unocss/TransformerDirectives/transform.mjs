@@ -11,10 +11,10 @@ export async function transformDirectives(
 	options,
 	filename,
 	originalCode,
-	offset,
+	offset
 ) {
 	let { applyVariable } = options;
-	const {varStyle} = options;
+	const { varStyle } = options;
 	if (applyVariable === undefined) {
 		if (varStyle !== undefined)
 			applyVariable = varStyle ? [`${varStyle}apply`] : [];
@@ -23,12 +23,13 @@ export async function transformDirectives(
 	applyVariable = toArray(applyVariable || []);
 
 	const parseCode = originalCode || code.original;
-	const hasApply = parseCode.includes('@apply') || applyVariable.some(s => parseCode.includes(s));
+	const hasApply =
+		parseCode.includes('@apply') ||
+		applyVariable.some((s) => parseCode.includes(s));
 	const hasScreen = parseCode.includes('@screen');
 	const hasThemeFn = hasThemeFunction(parseCode);
 
-	if (!hasApply && !hasThemeFn && !hasScreen)
-		return;
+	if (!hasApply && !hasThemeFn && !hasScreen) return;
 
 	const ast = parse(parseCode, {
 		parseCustomProperty: true,
@@ -38,8 +39,7 @@ export async function transformDirectives(
 		offset,
 	});
 
-	if (ast.type !== 'StyleSheet')
-		return;
+	if (ast.type !== 'StyleSheet') return;
 
 	const stack = [];
 
@@ -53,14 +53,11 @@ export async function transformDirectives(
 	};
 
 	const processNode = async (node, _item, _list) => {
-		if (hasScreen && node.type === 'Atrule')
-			handleScreen(ctx, node);
+		if (hasScreen && node.type === 'Atrule') handleScreen(ctx, node);
 
-		if (node.type === 'Function')
-			handleFunction(ctx, node);
+		if (node.type === 'Function') handleFunction(ctx, node);
 
-		if (hasApply && node.type === 'Rule')
-			await handleApply(ctx, node);
+		if (hasApply && node.type === 'Rule') await handleApply(ctx, node);
 	};
 
 	walk(ast, (...args) => stack.push(processNode(...args)));

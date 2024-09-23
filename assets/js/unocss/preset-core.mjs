@@ -72,7 +72,11 @@ function presetCore(options = {}) {
 
 		name: 'preset-core',
 
-		transformers: [...(wind.transformers || []), transformerVariantGroup(), transformerDirectives()],
+		transformers: [
+			...(wind.transformers || []),
+			transformerVariantGroup(),
+			transformerDirectives(),
+		],
 		presets: [...(wind.presets || []), presetNoDefaultRem()],
 
 		theme: {
