@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.0...v3.0.1) (2024-09-23)
+
+
+### Bug Fixes
+
+* transformed from typescript ([264233b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/264233b3819b37a7a543f81a69fdffe75a66f259))
+
 ## [3.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.1...v3.0.0) (2024-09-23)
 
 
