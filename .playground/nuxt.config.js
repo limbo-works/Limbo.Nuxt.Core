@@ -8,6 +8,10 @@ export default defineNuxtConfig({
 		includeWorkspace: true,
 	},
 
+	modules: [
+		'@unocss/nuxt',
+	],
+
 	css: [resolve('./assets/css/index.css')],
 	compatibilityDate: '2024-09-23',
 });

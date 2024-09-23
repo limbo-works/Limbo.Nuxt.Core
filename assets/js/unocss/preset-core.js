@@ -1,4 +1,5 @@
 import presetWind from '@unocss/preset-wind';
+import presetNoDefaultRem from './preset-no-default-rem';
 
 import transformerVariantGroup from '@unocss/transformer-variant-group';
 import transformerDirectives from './TransformerDirectives';
@@ -72,6 +73,7 @@ function presetCore(options = {}) {
 		name: 'preset-core',
 
 		transformers: [...(wind.transformers || []), transformerVariantGroup(), transformerDirectives()],
+		presets: [...(wind.presets || []), presetNoDefaultRem()],
 
 		theme: {
 			...wind.theme,

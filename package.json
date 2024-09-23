@@ -34,6 +34,7 @@
     "vite-svg-loader": "^5.1.0"
   },
   "devDependencies": {
-    "nuxt": "^3.13.2"
+    "nuxt": "^3.13.2",
+	"@unocss/nuxt": "0.60.3"
   }
 }
