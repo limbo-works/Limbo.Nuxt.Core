@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.1...v3.0.0) (2024-09-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* now it's know that the unocss things are modules
+
+### Bug Fixes
+
+* now it's know that the unocss things are modules ([d17d5a0](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d17d5a019a9c1ee6059ef4e02ae95bd8d754ce0f))
+
 ## [2.11.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.11.0...v2.11.1) (2024-09-23)
 
 
