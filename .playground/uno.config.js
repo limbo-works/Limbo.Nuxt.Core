@@ -1,6 +1,6 @@
 import { defineConfig } from 'unocss';
-import presetCore from '../assets/js/unocss/preset-core.js';
-import breakpoints from './assets/js/breakpoints.js';
+import presetCore from '../assets/js/unocss/preset-core';
+import breakpoints from './assets/js/breakpoints';
 
 export default defineConfig({
 	presets: [presetCore({ breakpoints })],

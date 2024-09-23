@@ -1,9 +1,9 @@
 import type { StringifiedUtil } from '@unocss/core'
 import type { CssNode, Rule, Selector, SelectorList } from 'css-tree'
-import type { TransformerDirectivesContext } from './types'
+import type { TransformerDirectivesContext } from './types.mjs'
 import { expandVariantGroup, notNull, regexScopePlaceholder } from '@unocss/core'
 import { clone, generate, List, parse } from 'css-tree'
-import { transformDirectives } from './transform'
+import { transformDirectives } from './transform.mjs'
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] }
 

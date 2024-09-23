@@ -1,6 +1,6 @@
 import type { Theme } from '@unocss/preset-mini'
 import type { Atrule } from 'css-tree'
-import type { TransformerDirectivesContext } from './types'
+import type { TransformerDirectivesContext } from './types.mjs'
 
 // eslint-disable-next-line regexp/no-misleading-capturing-group
 const screenRuleRE = /(@screen [^{]+)(.+)/g

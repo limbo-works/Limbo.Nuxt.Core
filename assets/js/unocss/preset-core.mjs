@@ -2,7 +2,7 @@ import presetWind from '@unocss/preset-wind';
 import presetNoDefaultRem from './preset-no-default-rem';
 
 import transformerVariantGroup from '@unocss/transformer-variant-group';
-import transformerDirectives from './TransformerDirectives';
+import transformerDirectives from './TransformerDirectives/index';
 
 function presetCore(options = {}) {
 	// Assign to the default options

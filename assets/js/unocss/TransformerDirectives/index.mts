@@ -1,9 +1,9 @@
 import type { SourceCodeTransformer } from '@unocss/core'
-import type { TransformerDirectivesOptions } from './types'
+import type { TransformerDirectivesOptions } from './types.mjs'
 import { cssIdRE } from '@unocss/core'
-import { transformDirectives } from './transform'
+import { transformDirectives } from './transform.mjs'
 
-export * from './types'
+export * from './types.mjs'
 
 export default function transformerDirectives(options: TransformerDirectivesOptions = {}): SourceCodeTransformer {
   return {

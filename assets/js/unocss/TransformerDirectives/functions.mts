@@ -1,5 +1,5 @@
 import type { FunctionNode, StringNode } from 'css-tree'
-import type { TransformerDirectivesContext } from './types'
+import type { TransformerDirectivesContext } from './types.mjs'
 import { transformThemeString } from '@unocss/rule-utils'
 
 export function handleFunction({ code, uno, options }: TransformerDirectivesContext, node: FunctionNode) {
