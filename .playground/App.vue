@@ -6,7 +6,7 @@
 		<div class="group text-blue" data-hover="hover">
 			<a
 				href="#"
-				class="inline-block group-focus-within:text-[white] p-1rem text-24 >=1024:w-1000 <1024:w-[calc(100%-24px)] bg-black"
+				class="inline-block group-focus-within:text-[white] p-1rem text-24 >=1024:w-1000 <1024:(w-[calc(100%-24px)] bg-black)"
 			>
 				Text
 			</a>
