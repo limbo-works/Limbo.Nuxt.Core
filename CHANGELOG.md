@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.2...v3.0.3) (2024-09-23)
+
+
+### Bug Fixes
+
+* tried cleaning the slightest bit up ([149d7e4](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/149d7e4c51a699ec12a9d2c40b1680ca8bb88f3a))
+
 ## [3.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.1...v3.0.2) (2024-09-23)
 
 
