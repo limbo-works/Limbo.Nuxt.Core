@@ -12,6 +12,9 @@
     "lint:fix": "yarn prettier --write . && yarn eslint --fix --quiet .",
     "test": "exit 0"
   },
+  "overrides": {
+    "vue": "3"
+  },
   "dependencies": {
     "@limbo-works/image": "^1.0.1",
     "@limbo-works/lint-configs": "^2.0.2",
