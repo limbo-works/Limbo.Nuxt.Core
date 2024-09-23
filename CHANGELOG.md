@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.11.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.10.0...v2.11.0) (2024-09-23)
+
+
+### Features
+
+* updated unocss preset with default transformers ([ab1d6af](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/ab1d6af2381d5203b41078408fbbf0e13d7f7ae1))
+
 ## [2.10.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v2.9.1...v2.10.0) (2024-09-19)
 
 
