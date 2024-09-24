@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.4...v3.0.5) (2024-09-24)
+
+
+### Bug Fixes
+
+* made transformers not part of the preset ([2ca095b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/2ca095b4530c0740e856100422ddd0cb0e2db6e9))
+
 ## [3.0.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.3...v3.0.4) (2024-09-23)
 
 
