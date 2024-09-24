@@ -1,10 +1,9 @@
+import { definePreset } from 'unocss';
+
 import presetWind from '@unocss/preset-wind';
 import presetNoDefaultRem from './preset-no-default-rem.mjs';
 
-import transformerVariantGroup from '@unocss/transformer-variant-group';
-import transformerDirectives from './TransformerDirectives/index.mjs';
-
-function presetCore(options = {}) {
+const presetCore = definePreset((options = {}) => {
 	// Assign to the default options
 	options = Object.assign(
 		{
@@ -72,11 +71,6 @@ function presetCore(options = {}) {
 
 		name: 'preset-core',
 
-		transformers: [
-			...(wind.transformers || []),
-			transformerVariantGroup(),
-			transformerDirectives(),
-		],
 		presets: [...(wind.presets || []), presetNoDefaultRem()],
 
 		theme: {
@@ -275,7 +269,7 @@ function presetCore(options = {}) {
 			},
 		],
 	};
-}
+});
 
 export default presetCore;
 export { presetCore };
