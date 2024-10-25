@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.6](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.5...v3.0.6) (2024-10-25)
+
+
+### Bug Fixes
+
+* made default value allow multiple checked ([5365719](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/53657196aa7bd7f490a3ca971230bdca3a029211))
+
 ## [3.0.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.4...v3.0.5) (2024-09-24)
 
 
