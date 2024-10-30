@@ -24,6 +24,13 @@ export default defineNuxtConfig({
 
 	vite: {
 		plugins: [
+			{
+				name: 'vue-docs',
+				transform(code, id) {
+					if (!/vue&type=docs/.test(id)) return;
+					return 'export default \'\'';
+				},
+			},
 			svgLoader({
 				svgoConfig: {
 					plugins: [
