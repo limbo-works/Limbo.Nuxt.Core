@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.6...v3.0.7) (2024-10-30)
+
+
+### Bug Fixes
+
+* made docs ignored in templates ([624deeb](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/624deeb3d2984572057bcd9e5e9002384d98605b))
+
 ## [3.0.6](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.5...v3.0.6) (2024-10-25)
 
 
