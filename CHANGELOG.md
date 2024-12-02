@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.7...v3.1.0) (2024-12-02)
+
+
+### Features
+
+* upgraded appHistory ([9ce73f9](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/9ce73f9df54c1b0f88c6a85a2a948f40834b044d))
+
 ## [3.0.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.6...v3.0.7) (2024-10-30)
 
 
