@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.1.0...v4.0.0) (2025-01-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove nuxt proxy
+
+### Features
+
+* remove nuxt proxy ([0788293](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/078829317b909da7393994ad13d2906d8cdb9655))
+
 ## [3.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.7...v3.1.0) (2024-12-02)
 
 
