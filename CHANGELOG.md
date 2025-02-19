@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.0.0...v4.1.0) (2025-02-19)
+
+
+### Features
+
+* added useAppHost composable ([facd870](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/facd870723c83419f178570aeeb9d25021446d1a))
+
 ## [4.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.1.0...v4.0.0) (2025-01-20)
 
 
