@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.2.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.1.0...v4.2.0) (2025-06-25)
+
+
+### Features
+
+* **useLimboForm:** updated items handling on ([66f8a2d](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/66f8a2db6bb17b76cd0530e1f847fcb3c4267bda))
+
 ## [4.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.0.0...v4.1.0) (2025-02-19)
 
 
