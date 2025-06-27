@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 				name: 'vue-docs',
 				transform(code, id) {
 					if (!/vue&type=docs/.test(id)) return;
-					return "export default ''";
+					return 'export default \'\'';
 				},
 			},
 			svgLoader({
@@ -101,5 +101,9 @@ export default defineNuxtConfig({
 		plugins: {
 			'postcss-nesting': {},
 		},
+	},
+
+	future: {
+		compatibilityVersion: 4,
 	},
 });
