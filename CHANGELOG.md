@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.2.0...v4.3.0) (2025-06-27)
+
+
+### Features
+
+* slight restructuring ([1496b84](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/1496b849ba719f43392c3f3dd7de221ef5b20976))
+
 ## [4.2.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.1.0...v4.2.0) (2025-06-25)
 
 
