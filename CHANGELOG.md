@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.0...v5.0.1) (2025-09-02)
+
+
+### Bug Fixes
+
+* update values properly ([534fd5d](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/534fd5d8e9c2268b53a1b22c371a85049e1670c7))
+
 ## [5.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.3.0...v5.0.0) (2025-09-02)
 
 
