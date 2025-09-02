@@ -10,8 +10,8 @@ export const useLimboForm = (formObject, options = {}) => {
 	options = {
 		// clone: If true, the formObject will be cloned instead of modified in place
 		clone: false,
-		// populateFromQuery: If true, the form will populate its fields from the query parameters
-		populateFromQuery: false,
+		// populate: If object, populates from that object
+		populate: false,
 		// setDefaultValues: If true, the form will set default values for fields that don't have them already
 		setDefaultValues: true,
 		// useDynamicFieldItems: If true, the form will use dynamic field items and include the itemsUpdater
@@ -36,17 +36,18 @@ export const useLimboForm = (formObject, options = {}) => {
 	};
 
 	// Generate the base structure and add missing properties
-	formObject = { ...(formObject || {}) };
+	// If we want a clone in place of changing the original object, do it early
+	if (options.clone) {
+		formObject = JSON.parse(JSON.stringify(formObject || {}));
+	} else {
+		formObject = { ...(formObject || {}) };
+	}
+
 	formObject.title = formObject.title ?? '';
 	formObject.method = formObject.method ?? 'GET';
 	formObject.endpointUrl = formObject.endpointUrl ?? '';
 	formObject.fields = formObject.fields ?? [];
 	formObject.labels = formObject.labels ?? {};
-
-	// If we want a clone in place of changing the original object
-	if (options.clone) {
-		formObject = JSON.parse(JSON.stringify(formObject));
-	}
 
 	// Set default values for fields
 	setFieldDefaults(formObject?.fields, options);
@@ -84,18 +85,22 @@ export const useLimboForm = (formObject, options = {}) => {
 		},
 		// Get a singular field by its type
 		get fieldByType() {
-			return this.fields.reduce((acc, field) => {
-				acc[field.type] = field;
-				return acc;
-			}, {});
+			return (
+				this.fields?.reduce((acc, field) => {
+					acc[field.type] = field;
+					return acc;
+				}, {}) ?? {}
+			);
 		},
 		// Get an array of fields with the same type
 		get fieldsByType() {
-			return this.fields.reduce((acc, field) => {
-				acc[field.type] = acc[field.type] ?? [];
-				acc[field.type].push(field);
-				return acc;
-			}, {});
+			return (
+				this.fields?.reduce((acc, field) => {
+					acc[field.type] = acc[field.type] ?? [];
+					acc[field.type].push(field);
+					return acc;
+				}, {}) ?? {}
+			);
 		},
 
 		// Add a fetch directly to the form that reads the fields and makes a request
@@ -188,12 +193,60 @@ export const useLimboForm = (formObject, options = {}) => {
 		delete formObject[key];
 	});
 
+	// Add reactive fieldValues for two-way binding
+	const _fieldValues = reactive({});
+
+	// Initialize fieldValues with current field values
+	formObject.fields?.forEach((field) => {
+		if (field.name) {
+			_fieldValues[field.name] = field.value;
+		}
+	});
+
+	// Add fieldValues getter and setter
+	Object.defineProperty(formObject, 'fieldValues', {
+		get() {
+			// Update the reactive object with current field values
+			this.fields?.forEach((field) => {
+				if (field.name) {
+					_fieldValues[field.name] = field.value;
+				}
+			});
+			return _fieldValues;
+		},
+		set(newValues) {
+			if (typeof newValues === 'object' && newValues !== null) {
+				// Update fields when fieldValues is set
+				this.fields?.forEach((field) => {
+					if (field.name && field.name in newValues) {
+						field.value = newValues[field.name];
+						_fieldValues[field.name] = newValues[field.name];
+						// Update items if field has them (for checkboxes/radio buttons)
+						if (field.items) {
+							field.items.forEach((item) => {
+								item.checked =
+									item.value === newValues[field.name];
+							});
+						}
+					}
+				});
+			}
+		},
+		enumerable: true,
+		configurable: true,
+	});
+
 	return formObject;
 };
 export default useLimboForm;
 
 function setFieldDefaults(fields, options) {
-	const { query } = useRoute();
+	// Get populate data from provided object
+	let populateData = {};
+
+	if (options?.populate && typeof options.populate === 'object') {
+		populateData = options.populate;
+	}
 	fields?.forEach((field, index, fields) => {
 		// Make sure each field has a default value
 		if (options?.setDefaultValues && !('defaultValue' in field)) {
@@ -223,14 +276,14 @@ function setFieldDefaults(fields, options) {
 			}
 		}
 
-		// Set values from query
-		if (options?.populateFromQuery) {
-			for (const key in query) {
+		// Set values from populate data (query params or custom object)
+		if (options?.populate && Object.keys(populateData).length > 0) {
+			for (const key in populateData) {
 				if (field.name === key) {
-					field.value = query[key];
+					field.value = populateData[key];
 					if (field.items) {
 						field.items.forEach((item) => {
-							item.checked = item.value === query[key];
+							item.checked = item.value === populateData[key];
 						});
 					}
 				}
