@@ -14,8 +14,6 @@ export const useLimboForm = (formObject, options = {}) => {
 		populate: false,
 		// setDefaultValues: If true, the form will set default values for fields that don't have them already
 		setDefaultValues: true,
-		// useDynamicFieldItems: If true, the form will use dynamic field items and include the itemsUpdater
-		useDynamicFieldItems: true,
 		// includeList: An array of keys to include in the form object (if not empty, all other keys will be removed)
 		includeList: [],
 		// excludeList: An array of keys to exclude from the form object
@@ -160,12 +158,19 @@ export const useLimboForm = (formObject, options = {}) => {
 				);
 				endpointUrl.search = new URLSearchParams(body).toString();
 
-				const data = await $fetch(endpointUrl.toString(), {
+				const fetchUrl = endpointUrl
+					.toString()
+					.startsWith('https://example.com')
+					? endpointUrl.toString().replace('https://example.com', '')
+					: endpointUrl.toString();
+
+				const data = await $fetch(fetchUrl, {
 					method: this.method || 'GET',
 					...fetchOptions,
 				}).then((response) => {
 					return response;
 				});
+
 				return data;
 			} else {
 				const data = await $fetch(this.endpointUrl, {
@@ -236,6 +241,11 @@ export const useLimboForm = (formObject, options = {}) => {
 		configurable: true,
 	});
 
+	// Update fieldValues
+	watch(_fieldValues, (newValues) => {
+		formObject.fieldValues = newValues;
+	});
+
 	return formObject;
 };
 export default useLimboForm;
@@ -293,98 +303,6 @@ function setFieldDefaults(fields, options) {
 		// Does the field include fields of its own?
 		if ('fields' in field) {
 			setFieldDefaults(field.fields, options);
-		}
-
-		// Add base itemsUpdater
-		if (options?.useDynamicFieldItems) {
-			field.itemsUpdater = reactive({
-				isUpdating: false,
-				update: () => {},
-			});
-
-			field._items = field.items || [];
-			const items = reactive([...field._items]);
-			field.items = items;
-
-			// Does this field have dynamic items/options?
-			if ('itemsEndpointUrl' in field) {
-				const queryString =
-					field.itemsEndpointUrl.split('?')?.[1] || '';
-				const regExp = new RegExp(/{([^}]+)}/g);
-				const matches = queryString.match(regExp) || [];
-
-				// Replace the values in the query string with the field values
-				const dependencies = matches
-					.reduce((acc, match) => {
-						acc.push(match.replace(/{|}/g, ''));
-						return acc;
-					}, [])
-					.filter(Boolean);
-				const dependencyObject = computed(() => {
-					return dependencies.reduce((acc, fieldName) => {
-						acc[fieldName] = fields.find(
-							(f) => f.name === fieldName
-						)?.value;
-						return acc;
-					}, {});
-				});
-
-				let updateItemsRequest = null;
-				field.itemsUpdater.update = async (overwrites) => {
-					overwrites = overwrites || {};
-					const [endpointUrl, queryString] =
-						field.itemsEndpointUrl.split('?');
-					const url = new URL(endpointUrl, 'https://example.com');
-
-					// Fill out dynamic values
-					let newSearchString = queryString ? `?${queryString}` : '';
-					for (const key in dependencyObject.value) {
-						newSearchString = newSearchString.replaceAll(
-							`{${key}}`,
-							encodeURIComponent(
-								dependencyObject.value[key] || ''
-							)
-						);
-					}
-					url.search = newSearchString;
-
-					// If there are overwrites, apply them
-					for (const key in overwrites) {
-						if (url.searchParams.has(key)) {
-							url.searchParams.set(key, overwrites[key]);
-						}
-					}
-
-					field.itemsUpdater.isUpdating = true;
-					const myItemsRequest = $fetch(
-						url.toString().startsWith('https://example.com')
-							? url.toString().replace('https://example.com', '')
-							: url.toString(),
-						{
-							method: 'GET',
-							headers: { 'Content-Type': 'application/json' },
-						}
-					)
-						.then((response) => {
-							return response;
-						})
-						.catch((error) => {
-							console.error('Error fetching items:', error);
-							return [];
-						});
-
-					updateItemsRequest = myItemsRequest;
-					const response = await myItemsRequest;
-					if (myItemsRequest === updateItemsRequest) {
-						items.length = 0;
-						items.push(...field._items);
-						if (response?.length) {
-							items.push(...response);
-						}
-						field.itemsUpdater.isUpdating = false;
-					}
-				};
-			}
 		}
 	});
 }
