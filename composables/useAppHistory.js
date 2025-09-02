@@ -39,7 +39,9 @@ export const useAppHistory = () => {
 
 	function update() {
 		if (metaPosition !== router.options.history.state.position) {
-			navigationDirection = Math.sign(router.options.history.state.position - metaPosition);
+			navigationDirection = Math.sign(
+				router.options.history.state.position - metaPosition
+			);
 			metaPosition = router.options.history.state.position;
 		}
 

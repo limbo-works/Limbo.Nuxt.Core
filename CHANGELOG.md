@@ -2,84 +2,73 @@
 
 ## [4.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.2.0...v4.3.0) (2025-06-27)
 
-
 ### Features
 
-* slight restructuring ([1496b84](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/1496b849ba719f43392c3f3dd7de221ef5b20976))
+-   slight restructuring ([1496b84](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/1496b849ba719f43392c3f3dd7de221ef5b20976))
 
 ## [4.2.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.1.0...v4.2.0) (2025-06-25)
 
-
 ### Features
 
-* **useLimboForm:** updated items handling on ([66f8a2d](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/66f8a2db6bb17b76cd0530e1f847fcb3c4267bda))
+-   **useLimboForm:** updated items handling on ([66f8a2d](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/66f8a2db6bb17b76cd0530e1f847fcb3c4267bda))
 
 ## [4.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.0.0...v4.1.0) (2025-02-19)
 
-
 ### Features
 
-* added useAppHost composable ([facd870](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/facd870723c83419f178570aeeb9d25021446d1a))
+-   added useAppHost composable ([facd870](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/facd870723c83419f178570aeeb9d25021446d1a))
 
 ## [4.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.1.0...v4.0.0) (2025-01-20)
 
-
 ### ⚠ BREAKING CHANGES
 
-* remove nuxt proxy
+-   remove nuxt proxy
 
 ### Features
 
-* remove nuxt proxy ([0788293](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/078829317b909da7393994ad13d2906d8cdb9655))
+-   remove nuxt proxy ([0788293](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/078829317b909da7393994ad13d2906d8cdb9655))
 
 ## [3.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.7...v3.1.0) (2024-12-02)
 
-
 ### Features
 
-* upgraded appHistory ([9ce73f9](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/9ce73f9df54c1b0f88c6a85a2a948f40834b044d))
+-   upgraded appHistory ([9ce73f9](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/9ce73f9df54c1b0f88c6a85a2a948f40834b044d))
 
 ## [3.0.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.6...v3.0.7) (2024-10-30)
 
-
 ### Bug Fixes
 
-* made docs ignored in templates ([624deeb](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/624deeb3d2984572057bcd9e5e9002384d98605b))
+-   made docs ignored in templates ([624deeb](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/624deeb3d2984572057bcd9e5e9002384d98605b))
 
 ## [3.0.6](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.5...v3.0.6) (2024-10-25)
 
-
 ### Bug Fixes
 
-* made default value allow multiple checked ([5365719](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/53657196aa7bd7f490a3ca971230bdca3a029211))
+-   made default value allow multiple checked ([5365719](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/53657196aa7bd7f490a3ca971230bdca3a029211))
 
 ## [3.0.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.4...v3.0.5) (2024-09-24)
 
-
 ### Bug Fixes
 
-* made transformers not part of the preset ([2ca095b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/2ca095b4530c0740e856100422ddd0cb0e2db6e9))
+-   made transformers not part of the preset ([2ca095b](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/2ca095b4530c0740e856100422ddd0cb0e2db6e9))
 
 ## [3.0.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.3...v3.0.4) (2024-09-23)
 
-
 ### Bug Fixes
 
-* reintroduced overrides ([50dfb07](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/50dfb0726e77d3d1832c64dc151c375c568a3f48))
+-   reintroduced overrides ([50dfb07](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/50dfb0726e77d3d1832c64dc151c375c568a3f48))
 
 ## [3.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.2...v3.0.3) (2024-09-23)
 
-
 ### Bug Fixes
 
-* tried cleaning the slightest bit up ([149d7e4](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/149d7e4c51a699ec12a9d2c40b1680ca8bb88f3a))
+-   tried cleaning the slightest bit up ([149d7e4](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/149d7e4c51a699ec12a9d2c40b1680ca8bb88f3a))
 
 ## [3.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.1...v3.0.2) (2024-09-23)
 
-
 ### Bug Fixes
 
-* tried removing typescript includeWorkspace ([8a5e5d1](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/8a5e5d1583c9d585b5c8680a95415b805fe86282))
+-   tried removing typescript includeWorkspace ([8a5e5d1](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/8a5e5d1583c9d585b5c8680a95415b805fe86282))
 
 ## [3.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v3.0.0...v3.0.1) (2024-09-23)
 
