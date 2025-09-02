@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.3.0...v5.0.0) (2025-09-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* update as breaking
+* updated useLimboForm with populate instead of populateFromQuery
+
+### Features
+
+* update as breaking ([29f1b27](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/29f1b2790a10a939700c0df0623e349e0dd02962))
+* updated useLimboForm with populate instead of populateFromQuery ([3ad8323](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/3ad8323a00be728d1eacb44ce2549544579bc1af))
+
 ## [4.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v4.2.0...v4.3.0) (2025-06-27)
 
 ### Features
