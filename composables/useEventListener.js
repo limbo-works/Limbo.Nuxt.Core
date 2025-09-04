@@ -20,7 +20,7 @@ export function useEventListener(...args) {
 		setTimeout(() => {
 			targets = resolveTargets(targets);
 			targets?.forEach((target) =>
-				target.addEventListener(event, callback, options)
+				target?.addEventListener?.(event, callback, options)
 			);
 			immediate && callback();
 		});
@@ -28,7 +28,7 @@ export function useEventListener(...args) {
 
 	onBeforeUnmount(() => {
 		targets?.forEach((target) =>
-			target.removeEventListener(event, callback, !!options?.capture)
+			target?.removeEventListener?.(event, callback, !!options?.capture)
 		);
 	});
 }
@@ -60,5 +60,5 @@ function resolveTargets(targets) {
 		result.push(target);
 	});
 
-	return result;
+	return result.filter(Boolean);
 }
