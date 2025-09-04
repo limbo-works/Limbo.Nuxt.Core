@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.1...v5.0.2) (2025-09-04)
+
+
+### Bug Fixes
+
+* useEventListener target issue ([d8dd11f](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d8dd11fa75f78a2c116cac5925d2c8218bd6f0af))
+
 ## [5.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.0...v5.0.1) (2025-09-02)
 
 
