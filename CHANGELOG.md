@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.2...v5.0.3) (2025-09-23)
+
+
+### Bug Fixes
+
+* cleanup ([4bb0441](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4bb0441cc1489ad5b2c319ec241aa5a9cf0b4531))
+
 ## [5.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.1...v5.0.2) (2025-09-04)
 
 
