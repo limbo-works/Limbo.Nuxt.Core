@@ -61,12 +61,14 @@ export const useLimboForm = (formObject, options = {}) => {
 		...(options.fetchOptions || {}),
 	};
 
+	const _endpointUrl = ref(formObject.endpointUrl);
+
 	formObject = {
 		...formObject,
 
 		// Get endpoint url
 		get endpointUrl() {
-			let { endpointUrl } = formObject;
+			let endpointUrl = _endpointUrl.value;
 
 			// Get magic key data from provided object
 			let enrichmentData = {};
@@ -82,6 +84,10 @@ export const useLimboForm = (formObject, options = {}) => {
 			}
 
 			return endpointUrl;
+		},
+
+		set endpointUrl(value) {
+			_endpointUrl.value = value;
 		},
 
 		// Get a singular field by its name
