@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.1.0...v5.1.1) (2025-11-24)
+
+
+### Bug Fixes
+
+* refactor endpointUrl to use reactive reference ([2f22f93](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/2f22f93db317b2f05323ea2b1115e3c04a1a04c5))
+
 ## [5.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.3...v5.1.0) (2025-11-24)
 
 
