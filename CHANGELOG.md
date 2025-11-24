@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.3...v5.1.0) (2025-11-24)
+
+
+### Features
+
+* implement enrichMagicKeys option in useLimboForm ([50b3a59](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/50b3a59dde48678fe6703d7c63a2270039cd79b2))
+
 ## [5.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.0.2...v5.0.3) (2025-09-23)
 
 
