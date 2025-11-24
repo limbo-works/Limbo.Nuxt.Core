@@ -12,6 +12,8 @@ export const useLimboForm = (formObject, options = {}) => {
 		clone: false,
 		// populate: If object, populates from that object
 		populate: false,
+		// enrichMagicKeys: if object, enriches fields and endpoint url with {properties}
+		enrichMagicKeys: false,
 		// setDefaultValues: If true, the form will set default values for fields that don't have them already
 		setDefaultValues: true,
 		// includeList: An array of keys to include in the form object (if not empty, all other keys will be removed)
@@ -61,6 +63,26 @@ export const useLimboForm = (formObject, options = {}) => {
 
 	formObject = {
 		...formObject,
+
+		// Get endpoint url
+		get endpointUrl() {
+			let { endpointUrl } = formObject;
+
+			// Get magic key data from provided object
+			let enrichmentData = {};
+
+			if (options?.populate && typeof options.populate === 'object') {
+				enrichmentData = options.enrichMagicKeys;
+
+				if (endpointUrl) {
+					Object.keys(enrichmentData).forEach((key) => {
+						endpointUrl.replaceAll(`{${key}}`, enrichmentData[key]);
+					});
+				}
+			}
+
+			return endpointUrl;
+		},
 
 		// Get a singular field by its name
 		get fieldByName() {
@@ -257,6 +279,14 @@ function setFieldDefaults(fields, options) {
 	if (options?.populate && typeof options.populate === 'object') {
 		populateData = options.populate;
 	}
+
+	// Get magic key data from provided object
+	let enrichmentData = {};
+
+	if (options?.populate && typeof options.populate === 'object') {
+		enrichmentData = options.enrichMagicKeys;
+	}
+
 	fields?.forEach((field, index, fields) => {
 		// Make sure each field has a default value
 		if (options?.setDefaultValues && !('defaultValue' in field)) {
@@ -289,11 +319,28 @@ function setFieldDefaults(fields, options) {
 		// Set values from populate data (query params or custom object)
 		if (options?.populate && Object.keys(populateData).length > 0) {
 			for (const key in populateData) {
-				if (field.name === key) {
+				if (field?.name === key) {
 					field.value = populateData[key];
 					if (field.items) {
 						field.items.forEach((item) => {
 							item.checked = item.value === populateData[key];
+						});
+					}
+				}
+			}
+		}
+
+		// Set magic keys
+		if (
+			options?.enrichMagicKeys &&
+			Object.keys(enrichmentData).length > 0
+		) {
+			for (const key in enrichmentData) {
+				if (field?.value === `{${key}}`) {
+					field.value = enrichmentData[key];
+					if (field.items) {
+						field.items.forEach((item) => {
+							item.checked = item.value === field.value[key];
 						});
 					}
 				}
