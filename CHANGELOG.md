@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.1.1...v5.2.0) (2025-12-11)
+
+
+### Features
+
+* enhance field value and checked state management ([0c3fbe2](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/0c3fbe26f3efbbef838f191c25c73db702607076))
+
 ## [5.1.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.1.0...v5.1.1) (2025-11-24)
 
 
