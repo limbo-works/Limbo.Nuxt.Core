@@ -306,6 +306,11 @@ function setFieldDefaults(fields, options) {
 						field.items?.find((item) => !item.value)?.value);
 		}
 
+		// And a default checked, if a checked is present
+		if ('checked' in field && !('defaultChecked' in field)) {
+			field.defaultChecked = field.checked;
+		}
+
 		// Make sure each field has a value
 		if (!('value' in field)) {
 			field.value = field.defaultValue;
@@ -326,11 +331,21 @@ function setFieldDefaults(fields, options) {
 		if (options?.populate && Object.keys(populateData).length > 0) {
 			for (const key in populateData) {
 				if (field?.name === key) {
-					field.value = populateData[key];
-					if (field.items) {
-						field.items.forEach((item) => {
-							item.checked = item.value === populateData[key];
-						});
+					if ('checked' in field) {
+						if (typeof populateData[key] === 'boolean') {
+							field.checked = populateData[key];
+						} else if (field.value === populateData[key]) {
+							field.checked = true;
+						} else {
+							field.checked = false;
+						}
+					} else {
+						field.value = populateData[key];
+						if (field.items) {
+							field.items.forEach((item) => {
+								item.checked = item.value === populateData[key];
+							});
+						}
 					}
 				}
 			}
