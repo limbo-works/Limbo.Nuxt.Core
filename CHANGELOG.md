@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.2.0...v5.2.1) (2026-01-15)
+
+
+### Bug Fixes
+
+* added some cleanup to aid against memory leaks ([0a49df0](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/0a49df0d8b7bb5a2d5e1ca7a8e8e73182a8d98f7))
+
 ## [5.2.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.1.1...v5.2.0) (2025-12-11)
 
 
