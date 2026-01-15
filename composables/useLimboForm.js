@@ -270,8 +270,12 @@ export const useLimboForm = (formObject, options = {}) => {
 	});
 
 	// Update fieldValues
-	watch(_fieldValues, (newValues) => {
+	const cleanup = watch(_fieldValues, (newValues) => {
 		formObject.fieldValues = newValues;
+	});
+
+	onScopeDispose(() => {
+		cleanup();
 	});
 
 	return formObject;

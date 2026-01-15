@@ -8,7 +8,7 @@ export default function useAttrsExcept(excludes, $attrs) {
 			'useAttrsExcept() needs a second argument, an attrs object, to function properly. UseAttrs() causes problems.'
 		);
 
-	watch(
+	const cleanup = watch(
 		() => attrs,
 		() => {
 			excludes ??= [];
@@ -21,6 +21,10 @@ export default function useAttrsExcept(excludes, $attrs) {
 		},
 		{ immediate: true }
 	);
+
+	onScopeDispose(() => {
+		cleanup();
+	});
 
 	return attrsToReturn;
 }

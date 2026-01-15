@@ -8,7 +8,7 @@ export default function useAttrsSome(subset, $attrs) {
 			'useAttrsSome() needs a second argument, an attrs object, to function properly. UseAttrs() causes problems.'
 		);
 
-	watch(
+	const cleanup = watch(
 		() => attrs,
 		() => {
 			subset ??= [];
@@ -20,6 +20,10 @@ export default function useAttrsSome(subset, $attrs) {
 		},
 		{ immediate: true }
 	);
+
+	onScopeDispose(() => {
+		cleanup();
+	});
 
 	return attrsToReturn;
 }
