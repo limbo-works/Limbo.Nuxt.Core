@@ -1,5 +1,3 @@
-import { onMounted, onBeforeUnmount, isRef } from 'vue';
-
 export function useEventListener(...args) {
 	let [targets, event, callback, options] = [
 		typeof args[1] === 'string' ? args.shift() : undefined,
