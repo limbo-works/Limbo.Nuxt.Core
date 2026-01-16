@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.3.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.1...v5.3.2) (2026-01-16)
+
+
+### Bug Fixes
+
+* remove unnecessary imports ([96e67c4](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/96e67c40bea27ae4d55231b97178d2f477bf3aab))
+* use on scope dispose instead ([dc911bd](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/dc911bd4128bfece5265c3fd07a250cd19ac877f))
+
 ## [5.3.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.0...v5.3.1) (2026-01-16)
 
 
