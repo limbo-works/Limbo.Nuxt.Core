@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.2.1...v5.3.0) (2026-01-16)
+
+
+### Features
+
+* improved useLimboForm a bit ([b0504b5](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/b0504b5f4bac56dee8b31bf5d8a19fa70adb17ba))
+
+
+### Bug Fixes
+
+* added some off-hooking for useEventBus ([1fcdfd2](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/1fcdfd20673ec36e2138ed329751fccccdc87f04))
+* added some state management to useGUID and useNumberId ([d54450e](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d54450eff023c8f1b831a015cc4fb660f9a24c0d))
+* added some timeout cleanup for useEventListener ([4c316d6](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4c316d6d76b744d115cc87bd9b8826ee04871fa3))
+
 ## [5.2.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.2.0...v5.2.1) (2026-01-15)
 
 
