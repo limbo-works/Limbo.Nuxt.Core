@@ -3,12 +3,12 @@ export function useEventBus() {
 	const registeredHooks = new Set();
 
 	// Cleanup hooks when component is unmounted
-	onBeforeUnmount(() => {
+	getCurrentScope() && onScopeDispose(() => {
 		registeredHooks.forEach((hookName) => {
 			app.hooks.removeHook(hookName);
 		});
 		registeredHooks.clear();
-	});
+	}, true);
 
 	return {
 		on(event, callback) {
