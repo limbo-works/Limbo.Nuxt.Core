@@ -38,7 +38,7 @@ export function useEventListener(...args) {
 		});
 	});
 
-	onBeforeUnmount(cleanup);
+	getCurrentScope() && onScopeDispose(cleanup, true);
 }
 
 function resolveTargets(targets) {
