@@ -73,12 +73,12 @@ export const useLimboForm = (formObject, options = {}) => {
 			// Get magic key data from provided object
 			let enrichmentData = {};
 
-			if (options?.populate && typeof options.populate === 'object') {
+			if (options?.enrichMagicKeys && typeof options.enrichMagicKeys === 'object') {
 				enrichmentData = options.enrichMagicKeys;
 
 				if (endpointUrl) {
 					Object.keys(enrichmentData).forEach((key) => {
-						endpointUrl.replaceAll(`{${key}}`, enrichmentData[key]);
+						endpointUrl = endpointUrl.replaceAll(`{${key}}`, enrichmentData[key]);
 					});
 				}
 			}
@@ -140,75 +140,90 @@ export const useLimboForm = (formObject, options = {}) => {
 
 			// Collect form data
 			const formData = new FormData();
-			this.fields
-				.filter((field) => {
-					return (
-						field &&
-						!options.excludeList?.includes?.(field.name) &&
-						!['button', 'submit'].includes(field.type)
+			try {
+				this.fields
+					.filter((field) => {
+						return (
+							field &&
+							!options.excludeList?.includes?.(field.name) &&
+							!['button', 'submit'].includes(field.type)
+						);
+					})
+					.forEach((field) => {
+						if (field.name) {
+							formData.set(field.name, field.value);
+						}
+					});
+				if (options.includeList?.length) {
+					for (const [key] of formData.entries()) {
+						if (!options.includeList?.includes?.(key)) {
+							formData.delete(key);
+						}
+					}
+				}
+
+				// Append form data
+				for (const key in options.dataAppendage) {
+					if (!options.excludeList?.includes?.(key)) {
+						formData.set(key, options.dataAppendage[key]);
+					}
+				}
+
+				// Make payload
+				const body =
+					options.useNativeFormDataOnPost &&
+					['POST', 'PUT', 'PATCH'].includes(this.method?.toUpperCase?.())
+						? formData
+						: Object.fromEntries(formData.entries());
+
+				// Make request
+				if (
+					['GET', 'DELETE'].includes(this.method?.toUpperCase?.()) ||
+					!this.method
+				) {
+					const endpointUrl = new URL(
+						this.endpointUrl,
+						'https://example.com'
 					);
-				})
-				.forEach((field) => {
-					if (field.name) {
-						formData.set(field.name, field.value);
-					}
-				});
-			if (options.includeList?.length) {
-				for (const [key] of formData.entries()) {
-					if (!options.includeList?.includes?.(key)) {
-						formData.delete(key);
-					}
+					endpointUrl.search = new URLSearchParams(body).toString();
+
+					const fetchUrl = endpointUrl
+						.toString()
+						.startsWith('https://example.com')
+						? endpointUrl.toString().replace('https://example.com', '')
+						: endpointUrl.toString();
+
+					const data = await $fetch(fetchUrl, {
+						method: this.method || 'GET',
+						...fetchOptions,
+					}).then((response) => {
+						return response;
+					}).finally(() => {
+						// Cleanup FormData
+						formData.forEach((value, key) => formData.delete(key));
+					});
+
+					return data;
+				} else {
+					const data = await $fetch(this.endpointUrl, {
+						method: this.method,
+						body,
+						...fetchOptions,
+					}).then((response) => {
+						return response;
+					}).finally(() => {
+						// Cleanup FormData
+						if (formData instanceof FormData) {
+							formData.forEach((value, key) => formData.delete(key));
+						}
+					});
+
+					return data;
 				}
-			}
-
-			// Append form data
-			for (const key in options.dataAppendage) {
-				if (!options.excludeList?.includes?.(key)) {
-					formData.set(key, options.dataAppendage[key]);
-				}
-			}
-
-			// Make payload
-			const body =
-				options.useNativeFormDataOnPost &&
-				['POST', 'PUT', 'PATCH'].includes(this.method?.toUpperCase?.())
-					? formData
-					: Object.fromEntries(formData.entries());
-
-			// Make request
-			if (
-				['GET', 'DELETE'].includes(this.method?.toUpperCase?.()) ||
-				!this.method
-			) {
-				const endpointUrl = new URL(
-					this.endpointUrl,
-					'https://example.com'
-				);
-				endpointUrl.search = new URLSearchParams(body).toString();
-
-				const fetchUrl = endpointUrl
-					.toString()
-					.startsWith('https://example.com')
-					? endpointUrl.toString().replace('https://example.com', '')
-					: endpointUrl.toString();
-
-				const data = await $fetch(fetchUrl, {
-					method: this.method || 'GET',
-					...fetchOptions,
-				}).then((response) => {
-					return response;
-				});
-
-				return data;
-			} else {
-				const data = await $fetch(this.endpointUrl, {
-					method: this.method,
-					body,
-					...fetchOptions,
-				}).then((response) => {
-					return response;
-				});
-				return data;
+			} catch (error) {
+				// Cleanup FormData on error
+				formData.forEach((value, key) => formData.delete(key));
+				throw error;
 			}
 		},
 	};
@@ -293,7 +308,7 @@ function setFieldDefaults(fields, options) {
 	// Get magic key data from provided object
 	let enrichmentData = {};
 
-	if (options?.populate && typeof options.populate === 'object') {
+	if (options?.enrichMagicKeys && typeof options.enrichMagicKeys === 'object') {
 		enrichmentData = options.enrichMagicKeys;
 	}
 
@@ -363,6 +378,16 @@ function setFieldDefaults(fields, options) {
 			for (const key in enrichmentData) {
 				if (field?.value === `{${key}}`) {
 					field.value = enrichmentData[key];
+					if (field.items) {
+						field.items.forEach((item) => {
+							item.checked = item.value === field.value[key];
+						});
+					}
+				} else if (field?.value?.includes?.(`{${key}}`)) {
+					field.value = field.value.replaceAll(
+						`{${key}}`,
+						enrichmentData[key]
+					);
 					if (field.items) {
 						field.items.forEach((item) => {
 							item.checked = item.value === field.value[key];
