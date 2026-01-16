@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.0...v5.3.1) (2026-01-16)
+
+
+### Bug Fixes
+
+* test for effect scopes ([2d7ce22](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/2d7ce2228cce8b99f8cc4f5fd8e40a6e2a25070a))
+
 ## [5.3.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.2.1...v5.3.0) (2026-01-16)
 
 
