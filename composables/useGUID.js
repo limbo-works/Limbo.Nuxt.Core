@@ -1,6 +1,18 @@
 /* Make a GUID */
 function useGUID(key) {
-	return key ? useState('_guid-' + key, makeGUID).value : makeGUID();
+	if (key) {
+		const stateKey = '_guid-' + key;
+		const guid = useState(stateKey, makeGUID);
+
+		// Clean up state on unmount
+		onScopeDispose(() => {
+			clearNuxtState(stateKey);
+		});
+
+		return guid.value;
+	}
+
+	return makeGUID();
 }
 
 export default useGUID;
