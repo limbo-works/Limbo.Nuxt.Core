@@ -21,9 +21,9 @@ export default function useAttrsSome(subset, $attrs) {
 		{ immediate: true }
 	);
 
-	onScopeDispose(() => {
+	getCurrentScope() && onScopeDispose(() => {
 		cleanup();
-	});
+	}, true);
 
 	return attrsToReturn;
 }

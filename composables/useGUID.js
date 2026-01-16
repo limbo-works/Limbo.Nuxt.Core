@@ -5,9 +5,9 @@ function useGUID(key) {
 		const guid = useState(stateKey, makeGUID);
 
 		// Clean up state on unmount
-		onScopeDispose(() => {
+		getCurrentScope() && onScopeDispose(() => {
 			clearNuxtState(stateKey);
-		});
+		}, true);
 
 		return guid.value;
 	}

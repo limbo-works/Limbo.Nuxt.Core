@@ -289,9 +289,9 @@ export const useLimboForm = (formObject, options = {}) => {
 		formObject.fieldValues = newValues;
 	});
 
-	onScopeDispose(() => {
+	getCurrentScope() && onScopeDispose(() => {
 		cleanup();
-	});
+	}, true);
 
 	return formObject;
 };

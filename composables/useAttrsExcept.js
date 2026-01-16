@@ -22,9 +22,9 @@ export default function useAttrsExcept(excludes, $attrs) {
 		{ immediate: true }
 	);
 
-	onScopeDispose(() => {
+	getCurrentScope() && onScopeDispose(() => {
 		cleanup();
-	});
+	}, true);
 
 	return attrsToReturn;
 }

@@ -7,9 +7,9 @@ function useNumberId(key) {
 		const numberId = useState(stateKey, nextNumber);
 
 		// Clean up state on unmount
-		onScopeDispose(() => {
+		getCurrentScope() && onScopeDispose(() => {
 			clearNuxtState(stateKey);
-		});
+		}, true);
 
 		return numberId.value;
 	}
