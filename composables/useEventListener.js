@@ -16,21 +16,29 @@ export function useEventListener(...args) {
 	const { immediate } = options;
 	delete options.immediate;
 
+	let timeoutId = null;
+	const cleanup = () => {
+		if (timeoutId !== null) {
+			clearTimeout(timeoutId);
+			timeoutId = null;
+		}
+		targets?.forEach((target) =>
+			target?.removeEventListener?.(event, callback, !!options?.capture)
+		);
+	};
+
 	onMounted(() => {
-		setTimeout(() => {
+		timeoutId = setTimeout(() => {
 			targets = resolveTargets(targets);
 			targets?.forEach((target) =>
 				target?.addEventListener?.(event, callback, options)
 			);
 			immediate && callback();
+			timeoutId = null;
 		});
 	});
 
-	onBeforeUnmount(() => {
-		targets?.forEach((target) =>
-			target?.removeEventListener?.(event, callback, !!options?.capture)
-		);
-	});
+	onBeforeUnmount(cleanup);
 }
 
 function resolveTargets(targets) {
