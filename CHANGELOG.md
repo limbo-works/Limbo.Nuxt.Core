@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.2...v5.3.3) (2026-01-16)
+
+
+### Bug Fixes
+
+* other way around ([adf88c6](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/adf88c69c7f019fa3dac02305d4054ffaefbf1ce))
+
 ## [5.3.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.1...v5.3.2) (2026-01-16)
 
 
