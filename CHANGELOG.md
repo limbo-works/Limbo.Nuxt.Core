@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.3...v5.3.4) (2026-01-20)
+
+
+### Bug Fixes
+
+* event bus fixes ([fe2c020](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/fe2c0207c7184741a9dd08fef603d759faf2df03))
+
 ## [5.3.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.2...v5.3.3) (2026-01-16)
 
 
