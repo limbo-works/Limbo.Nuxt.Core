@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.4...v5.3.5) (2026-02-16)
+
+
+### Bug Fixes
+
+* added tryOnScopeDispose ([6b5fc06](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/6b5fc06409386a7c5667701ac263c0ca2c64ce93))
+
 ## [5.3.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.3...v5.3.4) (2026-01-20)
 
 
