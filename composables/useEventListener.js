@@ -20,7 +20,7 @@ export function useEventListener(...args) {
 			clearTimeout(timeoutId);
 			timeoutId = null;
 		}
-		targets?.forEach((target) =>
+		targets?.forEach?.((target) =>
 			target?.removeEventListener?.(event, callback, !!options?.capture)
 		);
 	};
@@ -28,7 +28,7 @@ export function useEventListener(...args) {
 	onMounted(() => {
 		timeoutId = setTimeout(() => {
 			targets = resolveTargets(targets);
-			targets?.forEach((target) =>
+			targets?.forEach?.((target) =>
 				target?.addEventListener?.(event, callback, options)
 			);
 			immediate && callback();
