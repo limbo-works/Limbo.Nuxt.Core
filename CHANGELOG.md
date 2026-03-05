@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.6...v5.3.7) (2026-03-05)
+
+
+### Bug Fixes
+
+* upgraded `@limbo-works/image` version to avoid aspect ratio cropping issues ([1f62824](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/1f62824b97ec57cac514293ea39b08e245a12211))
+
 ## [5.3.6](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.5...v5.3.6) (2026-02-27)
 
 
