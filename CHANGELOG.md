@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.8](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.7...v5.3.8) (2026-03-16)
+
+
+### Bug Fixes
+
+* memory leak in eventBus ([9469576](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/946957626af5ff9190c3b9e281e0080d8b8664ac))
+
 ## [5.3.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.6...v5.3.7) (2026-03-05)
 
 
