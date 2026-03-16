@@ -1,6 +1,6 @@
 export function useEventBus() {
 	const app = tryUseNuxtApp();
-	if (!app) {
+	if (!app || import.meta.server) {
 		return {
 			on: () => () => {},
 			emit: () => {},
