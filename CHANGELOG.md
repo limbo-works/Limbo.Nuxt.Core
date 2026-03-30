@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.2...nuxt-core-v6.0.3) (2026-03-30)
+
+
+### Bug Fixes
+
+* made useGUID not fail ([57bb86a](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/57bb86a0f976a9bab322e2dd0230989357658a40))
+
 ## [6.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.1...nuxt-core-v6.0.2) (2026-03-30)
 
 
