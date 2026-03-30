@@ -893,10 +893,10 @@
   resolved "https://registry.yarnpkg.com/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz#8ace5259254426ccef57f3175bc64ed7095ed919"
   integrity sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==
 
-"@limbo-works/image@^2.0.1":
-  version "2.0.1"
-  resolved "https://npm.pkg.github.com/download/@limbo-works/image/2.0.1/d2ab487ce5608b340fa9e0ef872c5f7717fe9b1b#d2ab487ce5608b340fa9e0ef872c5f7717fe9b1b"
-  integrity sha512-IimflZ06U2In99ZfcoUgdV0ylB7n15UM3evrRWefWYHsnTzoJBNDu8sIT3QW8Uq/ZQ/Fh49K7vzoryb6Z9CjSA==
+"@limbo-works/image@^2.0.2":
+  version "2.0.2"
+  resolved "https://npm.pkg.github.com/download/@limbo-works/image/2.0.2/fe2b39fff599724e7a3eb6f27360be871f49e5eb#fe2b39fff599724e7a3eb6f27360be871f49e5eb"
+  integrity sha512-dO4WOVACo8VDCkH4cr12YpW857cU25oTQW5uhaVXwSePEvgP9z0gBPN33UPIzxpOyKetEGOKVeCHhoOlJ0RsqQ==
   dependencies:
     "@nuxt/image" "^2.0.0"
 
