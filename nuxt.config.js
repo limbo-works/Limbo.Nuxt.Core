@@ -102,8 +102,4 @@ export default defineNuxtConfig({
 			'postcss-nesting': {},
 		},
 	},
-
-	future: {
-		compatibilityVersion: 4,
-	},
 });
