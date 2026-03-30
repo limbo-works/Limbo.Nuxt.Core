@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.1...nuxt-core-v6.0.2) (2026-03-30)
+
+
+### Bug Fixes
+
+* reverted nuxt.config ([0737fd3](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/0737fd36ca097cd12821956de15f78980bf8563e))
+
 ## [6.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.0...nuxt-core-v6.0.1) (2026-03-30)
 
 
