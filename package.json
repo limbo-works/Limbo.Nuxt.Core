@@ -2,7 +2,7 @@
   "name": "@limbo-works/nuxt-core",
   "type": "module",
   "version": "6.0.0",
-  "main": "./nuxt.config.js",
+  "main": "./nuxt.config.ts",
   "scripts": {
     "dev": "nuxi prepare & nuxi dev .playground",
     "build": "nuxi build .playground",
@@ -16,7 +16,7 @@
     "vue": "3"
   },
   "dependencies": {
-    "@limbo-works/image": "^2.0.0",
+    "@limbo-works/image": "^2.0.1",
     "@limbo-works/lint-configs": "^2.0.3",
     "@nuxtjs/fontaine": "^0.5.0",
     "@pinia/nuxt": "^0.11.3",
