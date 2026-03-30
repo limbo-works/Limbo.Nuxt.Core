@@ -1,13 +1,18 @@
 /* Make a GUID */
 function useGUID(key) {
-	if (key) {
+	const nuxtApp = tryUseNuxtApp();
+
+	if (nuxtApp && key) {
 		const stateKey = '_guid-' + key;
 		const guid = useState(stateKey, makeGUID);
 
 		// Clean up state on unmount
-		getCurrentScope() && onScopeDispose(() => {
-			clearNuxtState(stateKey);
-		}, true);
+		getCurrentScope() &&
+			onScopeDispose(() => {
+				nuxtApp.runWithContext(() => {
+					clearNuxtState(stateKey);
+				});
+			}, true);
 
 		return guid.value;
 	}
