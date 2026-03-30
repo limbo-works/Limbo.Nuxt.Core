@@ -1,5 +1,14 @@
 # Changelog
 
+## [6.0.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.3...nuxt-core-v6.0.4) (2026-03-30)
+
+
+### Bug Fixes
+
+* also dont need compatibilityVersion ([d709784](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/d7097848987f4e9624be8cc05108853f45f2fb6d))
+* then we also don't need tsconfig ([0645cff](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/0645cffa626945ce9226fb74d0f1aae925c4515a))
+* upgraded to latest image package ([3e86a46](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/3e86a46a8ea7814adda994491a83aa6fa9298d7d))
+
 ## [6.0.3](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.2...nuxt-core-v6.0.3) (2026-03-30)
 
 
