@@ -1,17 +1,19 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-import { fileURLToPath } from 'node:url';
 import svgLoader from 'vite-svg-loader';
 
 const {
 	NODE_ENV = 'production',
 	NUXT_PUBLIC_API_DOMAIN: API_DOMAIN,
-	NUXT_PUBLIC_LOCAL_PORT: LOCAL_PORT = 3000,
-	NUXT_PUBLIC_DEBUG_MODE = false,
-} = process.env;
+	NUXT_PUBLIC_LOCAL_PORT: LOCAL_PORT_RAW = '3000',
+	NUXT_PUBLIC_DEBUG_MODE: DEBUG_MODE_RAW = 'false',
+} = import.meta.env;
+
+const LOCAL_PORT = Number.parseInt(LOCAL_PORT_RAW, 10) || 3000;
+const DEBUG_MODE = DEBUG_MODE_RAW === 'true' || DEBUG_MODE_RAW === '1';
 
 export default defineNuxtConfig({
 	extends: ['@limbo-works/image'],
-	debug: NUXT_PUBLIC_DEBUG_MODE,
+	debug: DEBUG_MODE,
 
 	devServer: {
 		port: LOCAL_PORT,
@@ -35,16 +37,16 @@ export default defineNuxtConfig({
 				svgoConfig: {
 					plugins: [
 						{
-							name: 'mergePaths',
-							active: false,
-						},
-						{
-							name: 'removeViewBox',
-							active: false,
+							name: 'preset-default',
+							params: {
+								overrides: {
+									mergePaths: false,
+									removeViewBox: false,
+								},
+							},
 						},
 						{
 							name: 'removeDimensions',
-							active: true,
 						},
 						{
 							name: 'addAttributesToSVGElement',
@@ -58,12 +60,7 @@ export default defineNuxtConfig({
 						{
 							name: 'prefixIds',
 							params: {
-								prefix: {
-									toString() {
-										this.counter = this.counter || 0;
-										return `svg-${this.counter++}`;
-									},
-								},
+								prefix: (_node, info) => `svg-${(info.path || 'icon').replace(/[^a-zA-Z0-9]+/g, '-')}`,
 							},
 						},
 					],
@@ -72,7 +69,7 @@ export default defineNuxtConfig({
 		],
 	},
 
-	css: [fileURLToPath(new URL('./assets/css/index.css', import.meta.url))],
+	css: ['./assets/css/index.css'],
 
 	router: {
 		options: {
@@ -89,12 +86,6 @@ export default defineNuxtConfig({
 			apiDomain: '',
 			appHost: '',
 			debugMode: NODE_ENV !== 'production',
-		},
-	},
-	nitro: {
-		compressPublicAssets: {
-			gzip: true,
-			brotli: true,
 		},
 	},
 	postcss: {
