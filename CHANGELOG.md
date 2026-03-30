@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.0...nuxt-core-v6.0.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* 2.0.1 refer typescript ([8644b65](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/8644b658e98ec6e4155bde376492c956f9147c84))
+
 ## [6.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v5.3.8...nuxt-core-v6.0.0) (2026-03-30)
 
 
