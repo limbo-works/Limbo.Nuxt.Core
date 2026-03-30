@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.8...v6.0.0) (2026-03-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgraded to Nuxt 4
+
+### Features
+
+* upgraded to Nuxt 4 ([02d3c04](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/02d3c04b8bc0624f698957552a8ff3e82408e3ee))
+
 ## [5.3.8](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/v5.3.7...v5.3.8) (2026-03-16)
 
 
