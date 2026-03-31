@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 				name: 'vue-docs',
 				transform(code, id) {
 					if (!/vue&type=docs/.test(id)) return;
-					return 'export default \'\'';
+					return { code: 'export default \'\'', map: null };
 				},
 			},
 			svgLoader({
