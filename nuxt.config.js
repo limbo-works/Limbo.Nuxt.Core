@@ -23,6 +23,9 @@ export default defineNuxtConfig({
 	},
 
 	vite: {
+		optimizeDeps: {
+			include: ['@limbo-works/image'],
+		},
 		plugins: [
 			{
 				name: 'vue-docs',
