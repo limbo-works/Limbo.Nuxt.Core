@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.4...nuxt-core-v6.0.5) (2026-03-31)
+
+
+### Bug Fixes
+
+* return sourcemap null in vue-docs vite plugin to suppress warning ([e7397df](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/e7397df6d3624c1a968839391bc3402a8f7228d3))
+
 ## [6.0.4](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.3...nuxt-core-v6.0.4) (2026-03-30)
 
 
