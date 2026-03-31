@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.6](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.5...nuxt-core-v6.0.6) (2026-03-31)
+
+
+### Bug Fixes
+
+* updated @limbo-works/image ([dd8328f](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/dd8328f554b0096026094c3a30d7495ffb391254))
+
 ## [6.0.5](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.4...nuxt-core-v6.0.5) (2026-03-31)
 
 
