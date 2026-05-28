@@ -73,12 +73,18 @@ export const useLimboForm = (formObject, options = {}) => {
 			// Get magic key data from provided object
 			let enrichmentData = {};
 
-			if (options?.enrichMagicKeys && typeof options.enrichMagicKeys === 'object') {
+			if (
+				options?.enrichMagicKeys &&
+				typeof options.enrichMagicKeys === 'object'
+			) {
 				enrichmentData = options.enrichMagicKeys;
 
 				if (endpointUrl) {
 					Object.keys(enrichmentData).forEach((key) => {
-						endpointUrl = endpointUrl.replaceAll(`{${key}}`, enrichmentData[key]);
+						endpointUrl = endpointUrl.replaceAll(
+							`{${key}}`,
+							enrichmentData[key]
+						);
 					});
 				}
 			}
@@ -172,7 +178,9 @@ export const useLimboForm = (formObject, options = {}) => {
 				// Make payload
 				const body =
 					options.useNativeFormDataOnPost &&
-					['POST', 'PUT', 'PATCH'].includes(this.method?.toUpperCase?.())
+					['POST', 'PUT', 'PATCH'].includes(
+						this.method?.toUpperCase?.()
+					)
 						? formData
 						: Object.fromEntries(formData.entries());
 
@@ -190,18 +198,24 @@ export const useLimboForm = (formObject, options = {}) => {
 					const fetchUrl = endpointUrl
 						.toString()
 						.startsWith('https://example.com')
-						? endpointUrl.toString().replace('https://example.com', '')
+						? endpointUrl
+								.toString()
+								.replace('https://example.com', '')
 						: endpointUrl.toString();
 
 					const data = await $fetch(fetchUrl, {
 						method: this.method || 'GET',
 						...fetchOptions,
-					}).then((response) => {
-						return response;
-					}).finally(() => {
-						// Cleanup FormData
-						formData.forEach((value, key) => formData.delete(key));
-					});
+					})
+						.then((response) => {
+							return response;
+						})
+						.finally(() => {
+							// Cleanup FormData
+							formData.forEach((value, key) =>
+								formData.delete(key)
+							);
+						});
 
 					return data;
 				} else {
@@ -209,14 +223,18 @@ export const useLimboForm = (formObject, options = {}) => {
 						method: this.method,
 						body,
 						...fetchOptions,
-					}).then((response) => {
-						return response;
-					}).finally(() => {
-						// Cleanup FormData
-						if (formData instanceof FormData) {
-							formData.forEach((value, key) => formData.delete(key));
-						}
-					});
+					})
+						.then((response) => {
+							return response;
+						})
+						.finally(() => {
+							// Cleanup FormData
+							if (formData instanceof FormData) {
+								formData.forEach((value, key) =>
+									formData.delete(key)
+								);
+							}
+						});
 
 					return data;
 				}
@@ -273,7 +291,10 @@ export const useLimboForm = (formObject, options = {}) => {
 						if (field.items) {
 							field.items.forEach((item) => {
 								item.checked =
-									item.value === newValues[field.name];
+									item.value === newValues[field.name] ||
+									newValues[field.name]
+										?.split(',')
+										.includes?.(item.value);
 							});
 						}
 					}
@@ -289,9 +310,10 @@ export const useLimboForm = (formObject, options = {}) => {
 		formObject.fieldValues = newValues;
 	});
 
-	getCurrentScope() && onScopeDispose(() => {
-		cleanup();
-	}, true);
+	getCurrentScope() &&
+		onScopeDispose(() => {
+			cleanup();
+		}, true);
 
 	return formObject;
 };
@@ -308,7 +330,10 @@ function setFieldDefaults(fields, options) {
 	// Get magic key data from provided object
 	let enrichmentData = {};
 
-	if (options?.enrichMagicKeys && typeof options.enrichMagicKeys === 'object') {
+	if (
+		options?.enrichMagicKeys &&
+		typeof options.enrichMagicKeys === 'object'
+	) {
 		enrichmentData = options.enrichMagicKeys;
 	}
 
