@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.0.8](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.7...nuxt-core-v6.0.8) (2026-05-28)
+
+
+### Bug Fixes
+
+* corrected checkbox update logic in `useLimboForm` ([24c1b43](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/24c1b437c9f7c6a23044713c19ef26b0006468cc))
+
 ## [6.0.7](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.6...nuxt-core-v6.0.7) (2026-03-31)
 
 
