@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.8...nuxt-core-v6.1.0) (2026-10-02)
+
+
+### Features
+
+* **assets:** updated unocss handlings ([4296472](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/4296472229918fb8beeaf72dbf5b31c800ab6a37))
+
 ## [6.0.8](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.7...nuxt-core-v6.0.8) (2026-05-28)
 
 
