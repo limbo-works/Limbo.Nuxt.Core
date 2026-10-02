@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.1.0...nuxt-core-v6.1.1) (2026-10-02)
+
+
+### Bug Fixes
+
+* **assets:** corrupt functions ([c018683](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/c018683f805a156ca18be494a5232e3294ff65e0))
+
 ## [6.1.0](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.0.8...nuxt-core-v6.1.0) (2026-10-02)
 
 
