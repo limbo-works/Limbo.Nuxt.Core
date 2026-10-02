@@ -69,27 +69,35 @@ export async function parseApply(
 		.split(/\s+/g)
 		.map((className) => className.trim().replace(/\\/, ''));
 
+	const properties = new Map();
 	const utils = (
 		await Promise.all(classNames.map((i) => uno.parseToken(i, '-')))
 	)
 		.filter(notNull)
 		.flat()
 		.sort((a, b) => a[0] - b[0])
-		.sort(
-			(a, b) =>
-				(a[3] ? (uno.parentOrders.get(a[3]) ?? 0) : 0) -
-				(b[3] ? (uno.parentOrders.get(b[3]) ?? 0) : 0)
-		)
+		.sort((first, second) => {
+			return (
+				(first[3] ? (getParentOrder(uno, first[3]) ?? 0) : 0) -
+				(second[3] ? (getParentOrder(uno, second[3]) ?? 0) : 0)
+			);
+		})
 		.reduce((acc, item) => {
+			if (item[4]?.layer === 'properties') {
+				properties.set(item[1], item[2]);
+				return acc;
+			}
+
 			const target = acc.find(
 				(i) => i[1] === item[1] && i[3] === item[3]
 			);
-			if (target) target[2] += item[2];
-			else acc.push([...item]);
+			if (target) {
+				if (!target[2].includes(item[2])) target[2] += item[2];
+			} else acc.push([...item]);
 			return acc;
 		}, []);
 
-	if (!utils.length) return;
+	if (!utils.length && !properties.size) return;
 
 	let simicolonOffset =
 		original[childNode.loc.end.offset] === ';'
@@ -99,16 +107,18 @@ export async function parseApply(
 				: 0;
 
 	for (const i of utils) {
-		const [, _selector, body, parent] = i;
+		const [, _selector, body, parent, meta] = i;
 		const selectorOrGroup =
 			_selector?.replace(regexScopePlaceholder, ' ') || _selector;
-		if (parent || (selectorOrGroup && selectorOrGroup !== '.\\-')) {
+		const shouldUseSelector = selectorOrGroup && selectorOrGroup !== '.\\-';
+		if (parent || shouldUseSelector || meta?.noMerge) {
 			let newSelector = generate(node.prelude);
 			const className = code.slice(
 				node.prelude.loc.start.offset,
 				node.prelude.loc.end.offset
 			);
-			if (selectorOrGroup && selectorOrGroup !== '.\\-') {
+			if (meta?.noMerge) newSelector = selectorOrGroup;
+			else if (shouldUseSelector) {
 				const ruleAST = parse(`${selectorOrGroup}{}`, {
 					context: 'rule',
 				});
@@ -119,9 +129,9 @@ export async function parseApply(
 					const selectorListAst = clone(ruleAST.prelude);
 					const classSelectors = new List();
 
-					selectorListAst.children.forEach((selectorAst) => {
+					selectorListAst?.children?.forEach((selectorAst) => {
 						classSelectors.appendList(
-							selectorAst.children.filter(
+							selectorAst?.children?.filter(
 								(i) =>
 									i.type === 'ClassSelector' &&
 									i.name === '\\-'
@@ -136,8 +146,24 @@ export async function parseApply(
 				});
 				newSelector = generate(prelude);
 			}
-			let css = `${newSelector.replace(/.\\-/g, className)}{${body}}`;
-			if (parent) css = `${parent}{${css}}`;
+			let resolvedSelector = newSelector;
+			if (newSelector.includes('.\\-')) {
+				resolvedSelector = className
+					.split(',')
+					.map((selector) => {
+						return newSelector.replace(/.\\-/g, selector.trim());
+					})
+					.join(',');
+			}
+			let css = `${resolvedSelector}{${body}}`;
+			if (parent) {
+				if (parent.includes(' $$ ')) {
+					for (const parentSelector of parent.split(' $$ ')) {
+						css = `${parentSelector}{${css}}`;
+					}
+				} else if (parent === '.\\-') css = `${className}{${css}}`;
+				else css = `${parent}{${css}}`;
+			}
 			simicolonOffset = 0;
 			code.appendLeft(node.loc.end.offset, css);
 		} else {
@@ -149,10 +175,25 @@ export async function parseApply(
 				);
 		}
 	}
+	const propertyCss = Array.from(properties)
+		.sort(([first], [second]) => {
+			return first.localeCompare(second);
+		})
+		.map(([property, value]) => {
+			return `${property}{${value}}`;
+		})
+		.join('');
+	if (propertyCss) code.appendLeft(0, propertyCss);
 	code.remove(
 		childNode.loc.start.offset,
 		childNode.loc.end.offset + simicolonOffset
 	);
+}
+
+function getParentOrder(uno, parent) {
+	return uno.getParentOrder
+		? uno.getParentOrder(parent)
+		: uno.parentOrders.get(parent);
 }
 
 function removeQuotes(value) {

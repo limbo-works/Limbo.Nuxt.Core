@@ -1,9 +1,16 @@
 import { toArray } from '@unocss/core';
-import { hasThemeFn as hasThemeFunction } from '@unocss/rule-utils';
+import { hasIconFn, hasThemeFn as hasThemeFunction } from '@unocss/rule-utils';
 import { parse, walk } from 'css-tree';
 import { handleApply } from './apply.mjs';
 import { handleFunction } from './functions.mjs';
 import { handleScreen } from './screen.mjs';
+
+export function resolveApplyVariables(options) {
+	const { applyVariable, varStyle } = options;
+	if (applyVariable !== undefined) return toArray(applyVariable || []);
+	if (varStyle !== undefined) return varStyle ? [`${varStyle}apply`] : [];
+	return ['--at-apply', '--uno-apply', '--uno'];
+}
 
 export async function transformDirectives(
 	code,
@@ -13,23 +20,16 @@ export async function transformDirectives(
 	originalCode,
 	offset
 ) {
-	let { applyVariable } = options;
-	const { varStyle } = options;
-	if (applyVariable === undefined) {
-		if (varStyle !== undefined)
-			applyVariable = varStyle ? [`${varStyle}apply`] : [];
-		applyVariable = ['--at-apply', '--uno-apply', '--uno'];
-	}
-	applyVariable = toArray(applyVariable || []);
+	const applyVariable = resolveApplyVariables(options);
 
 	const parseCode = originalCode || code.original;
 	const hasApply =
 		parseCode.includes('@apply') ||
 		applyVariable.some((s) => parseCode.includes(s));
 	const hasScreen = parseCode.includes('@screen');
-	const hasThemeFn = hasThemeFunction(parseCode);
+	const hasFn = hasThemeFunction(parseCode) || hasIconFn(parseCode);
 
-	if (!hasApply && !hasThemeFn && !hasScreen) return;
+	if (!hasApply && !hasFn && !hasScreen) return;
 
 	const ast = parse(parseCode, {
 		parseCustomProperty: true,
@@ -52,15 +52,16 @@ export async function transformDirectives(
 		offset,
 	};
 
-	const processNode = async (node, _item, _list) => {
-		if (hasScreen && node.type === 'Atrule') handleScreen(ctx, node);
+	async function processNode(node) {
+		if (hasScreen && node.type === 'Atrule' && node.name === 'screen')
+			handleScreen(ctx, node);
+		else if (node.type === 'Function') await handleFunction(ctx, node);
+		else if (hasApply && node.type === 'Rule') await handleApply(ctx, node);
+	}
 
-		if (node.type === 'Function') handleFunction(ctx, node);
-
-		if (hasApply && node.type === 'Rule') await handleApply(ctx, node);
-	};
-
-	walk(ast, (...args) => stack.push(processNode(...args)));
+	walk(ast, (node) => {
+		return stack.push(processNode(node));
+	});
 
 	await Promise.all(stack);
 }

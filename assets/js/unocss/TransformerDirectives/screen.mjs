@@ -24,21 +24,28 @@ export function handleScreen({ code, uno }, node) {
 	}
 
 	const resolveBreakpoints = () => {
+		const key = uno.config.presets?.some((preset) => {
+			return preset.name === '@unocss/preset-wind4';
+		})
+			? 'breakpoint'
+			: 'breakpoints';
 		let breakpoints;
 		if (uno.userConfig && uno.userConfig.theme)
-			breakpoints = uno.userConfig.theme.breakpoints;
+			breakpoints = uno.userConfig.theme[key];
 
-		if (!breakpoints) breakpoints = uno.config.theme.breakpoints;
+		if (!breakpoints) breakpoints = uno.config.theme[key];
 
-		return breakpoints
-			? Object.entries(breakpoints)
-				.sort(
-					(a, b) =>
-						Number.parseInt(a[1].replace(/[a-z]+/gi, '')) -
-							Number.parseInt(b[1].replace(/[a-z]+/gi, ''))
-				)
-				.map(([point, size]) => ({ point, size }))
-			: undefined;
+		if (!breakpoints) return;
+		return Object.entries(breakpoints)
+			.sort((first, second) => {
+				return (
+					Number.parseInt(first[1].replace(/[a-z]+/gi, '')) -
+					Number.parseInt(second[1].replace(/[a-z]+/gi, ''))
+				);
+			})
+			.map(([point, size]) => {
+				return { point, size };
+			});
 	};
 	const variantEntries = (resolveBreakpoints() ?? []).map(
 		({ point, size }, idx) => [point, size, idx]
