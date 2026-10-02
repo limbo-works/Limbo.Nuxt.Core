@@ -5,53 +5,61 @@ export async function handleFunction(context, node) {
 	const { code, uno, options } = context;
 	const { throwOnMissing = true } = options;
 
-	if (node.name === 'th	e') {
-		if (!nod		hildren.size)
-			throw ne			ror('theme() expect exact one argument');
-		if (node.c		dren.first.type !== 'String')
-			throw new 			r('theme() expect a string argument');
+	if (node.name === 'theme') {
+		if (!node.children.size)
+			throw new Error('theme() expect exact one argument');
+		if (node.children.first.type !== 'String')
+			throw new Error('theme() expect a string argument');
 
-		let defaultV		eLoc;
-		if (node.chil		n.size > 1) {
-			const remains			ode.children.toArray().slice(1);
-			if (remains[0]			e !==				rat					 remains[0].value !== ',')
+		let defaultValueLoc;
+		if (node.children.size > 1) {
+			const remains = node.children.toArray().slice(1);
+			if (remains[0].type !== 'Operator' || remains[0].value !== ',')
 				throw new Error(
-					'theme() exp				 c			 b				n expression stri					 default value'
+					'theme() expect a comma between expression string and default value'
 				);
 			if (remains.length > 1)
-				defaultValueLoc										mains[1].loc.start.offse							node.children.las					end.offset,
+				defaultValueLoc = [
+					remains[1].loc.start.offset,
+					node.children.last.loc.end.offset,
 				];
 		}
 
-		con					meStr = node.children.first.value;
-				 va		 = 		nsformThemeString(
+		const themeStr = node.children.first.value;
+		let value = transformThemeString(
 			themeStr,
-			uno.confi		heme,
-			!defaultValueLoc && throw			ssing
-		);			f (!value && defau			lueLoc)
-			value = code.slice(defau		alu		c[0], defaultValueLoc[1]);
-		if			lue)
-			code.overwrite(node.loc.start.offset, node.loc.end.o		et, value);			else if (node.na				= 'icon') {
-		const par				 node.children
-			.to				()
-						ter		hild) =	{
-			return child.		e === 'String';
+			uno.config.theme,
+			!defaultValueLoc && throwOnMissing
+		);
+		if (!value && defaultValueLoc)
+			value = code.slice(defaultValueLoc[0], defaultValueLoc[1]);
+		if (value)
+			code.overwrite(node.loc.start.offset, node.loc.end.offset, value);
+	} else if (node.name === 'icon') {
+		const params = node.children
+			.toArray()
+			.filter((child) => {
+				return child.type === 'String';
 			})
-			.map			ild) => {
-				eturn child.value;
-								if (!params.length)
-			throw n			rro			con() expects at l				one argument');
-		co			[ico		color] = params;
-		l			ncodedColor;
+			.map((child) => {
+				return child.value;
+			});
+		if (!params.length)
+			throw new Error('icon() expects at least one argument');
+
+		const [icon, color] = params;
+		let encodedColor;
 		if (color) {
-			const resolvedColor = tran		rmThemeFn(
+			const resolvedColor = transformThemeFn(
 				color,
-				uno.		fig.theme,
-				throwOnMissi					);
-			encodedColor =				eURIComponent(reso					or);
-							st value = await t					mIconString(uno				, 			ed			r);
-		if (val		
-			code.overwrite(node.loc.start.offset, node.loc.end.offset, val		;
+				uno.config.theme,
+				throwOnMissing
+			);
+			encodedColor = encodeURIComponent(resolvedColor);
+		}
+
+		const value = await transformIconString(uno, icon, encodedColor);
+		if (value)
+			code.overwrite(node.loc.start.offset, node.loc.end.offset, value);
 	}
 }
-																					
