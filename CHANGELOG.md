@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.1.2](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.1.1...nuxt-core-v6.1.2) (2026-10-07)
+
+
+### Bug Fixes
+
+* upgraded and added enforce: 'pre' ([ffed18e](https://github.com/limbo-works/Limbo.Nuxt.Core/commit/ffed18ebc19d2642727d9b89e7e6a538bffcf6d2))
+
 ## [6.1.1](https://github.com/limbo-works/Limbo.Nuxt.Core/compare/nuxt-core-v6.1.0...nuxt-core-v6.1.1) (2026-10-02)
 
 
