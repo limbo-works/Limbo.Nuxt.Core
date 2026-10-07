@@ -29,6 +29,7 @@ export default defineNuxtConfig({
 		plugins: [
 			{
 				name: 'vue-docs',
+				enforce: 'pre',
 				transform(code, id) {
 					if (!/vue&type=docs/.test(id)) return;
 					return { code: 'export default \'\'', map: null };
